@@ -2,6 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc4'
 
+# Application gems
+gem 'devise'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -14,6 +17,8 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
+gem 'therubyracer' # for execjs support
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -22,8 +27,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem 'therubyracer'
 
 group :test do
   # Pretty printed test output
