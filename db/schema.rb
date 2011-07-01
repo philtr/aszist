@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630204711) do
+ActiveRecord::Schema.define(:version => 20110701173414) do
+
+  create_table "tickets", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "agent_id"
+    t.string   "priority"
+    t.string   "status"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tickets", ["agent_id"], :name => "index_tickets_on_agent_id"
+  add_index "tickets", ["user_id"], :name => "index_tickets_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user:
+  agent:
+  priority: MyString
+  status: MyString
+  subject: MyString
+  body: MyText
+
+two:
+  user:
+  agent:
+  priority: MyString
+  status: MyString
+  subject: MyString
+  body: MyText
