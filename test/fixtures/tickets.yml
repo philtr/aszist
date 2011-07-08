@@ -3,15 +3,9 @@
 one:
   user:
   agent:
-  priority: MyString
-  status: MyString
-  subject: MyString
-  body: MyText
+  priority: Low
+  status: 
+  subject: Having trouble
+  body: |
+    Hello, I'm having trouble creating an account, thanks :)
 
-two:
-  user:
-  agent:
-  priority: MyString
-  status: MyString
-  subject: MyString
-  body: MyText

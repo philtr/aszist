@@ -3,8 +3,8 @@ require 'test_helper'
 class TicketsControllerTest < ActionController::TestCase
   setup do
     @ticket = tickets(:one)
-    @ticket.user = users(:two)
-    @ticket.agent = users(:one)
+    @ticket.user = users(:user_one)
+    @ticket.agent = users(:agent_one)
   end
 
   test "should get index" do

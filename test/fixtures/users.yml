@@ -4,10 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
+agent_one:
   email: developers@balcomagency.com
   encrypted_password: DyighJupBegMasyoojyudOnFavEpBajHymchyewfincaspavMybnewwohazHuld
 
-two:
+user_one:
   email: phillip@ridlen.net
   encrypted_password: miRicAgTevmeivAnriojsucGokTavsidheySchyataucAmNildUtnoijCeuwayt5
