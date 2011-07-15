@@ -1,23 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc4'
+gem 'rails', '~> 3.1.0.rc4'
 
 # Application gems
-gem 'devise'
+gem 'devise', '~> 1.4.2'
+gem 'cancan', '~> 1.6.5'
+gem 'roles_generic', '~> 0.3.9'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.3'
 
 # Asset template engines
-gem 'sass-rails', "~> 3.1.0.rc"
-gem 'coffee-script'
-gem 'uglifier'
+gem 'sass-rails', '~> 3.1.0.rc'
+gem 'coffee-script', '~> 2.2.0'
+gem 'uglifier', '~> 1.0.0'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 1.0.12'
 
-gem 'therubyracer' # for execjs support
+gem 'therubyracer', '~> 0.9.2' # for execjs support
 
 # Use unicorn as the web server
 # gem 'unicorn'
