@@ -8,7 +8,7 @@ class Ticket < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :status, :inclusion => { :in => Ticket::Statuses }
 
-  before_validation :set_pending
+  before_validation :set_pending, :create_user
 
   scope :pending_tickets, where(:status => "pending")
   scope :open_tickets,    where(:status => "open")
@@ -22,6 +22,12 @@ private
 
   def set_pending
     self.status = "pending" if self.status.to_s.empty?
+  end
+
+  def create_user
+    if self.user.nil?
+      # TODO: Create new user for email and assign to ticket
+    end
   end
 
 end
