@@ -18,6 +18,11 @@ class Ticket < ActiveRecord::Base
   scope :medium_priority, where(:priority => "medium")
   scope :high_priority,   where(:priority => "high")
 
+
+  def date
+    self.created_at.strftime('%b %d')
+  end
+
 private
 
   def set_pending

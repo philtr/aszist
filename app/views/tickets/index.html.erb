@@ -1,33 +1,16 @@
-<h1>Listing tickets</h1>
+<h1>Your tickets</h1>
 
 <table>
-  <tr>
-    <th>User</th>
-    <th>Agent</th>
-    <th>Priority</th>
-    <th>Status</th>
-    <th>Subject</th>
-    <th>Body</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @tickets.each do |ticket| %>
-  <tr>
-    <td><%= ticket.user %></td>
-    <td><%= ticket.agent %></td>
-    <td><%= ticket.priority %></td>
-    <td><%= ticket.status %></td>
-    <td><%= ticket.subject %></td>
-    <td><%= ticket.body %></td>
-    <td><%= link_to 'Show', ticket %></td>
-    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
-    <td><%= link_to 'Destroy', ticket, confirm: 'Are you sure?', method: :delete %></td>
+  <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even') %> <%= ticket.priority %> <%= ticket.status %>">
+    <td class="date"><%= ticket.date %></td>
+    <td class="subject"><%= link_to ticket.subject, url_for(ticket) %></td>
+    <td class="priority"><%= ticket.priority %></td>
+    <td class="status"><%= ticket.status %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ticket', new_ticket_path %>
+<%= link_to 'Submit New Ticket', new_ticket_path %>

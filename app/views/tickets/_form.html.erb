@@ -12,20 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :agent %><br />
-    <%= f.text_field :agent %>
-  </div>
-  <div class="field">
     <%= f.label :priority %><br />
-    <%= f.text_field :priority %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.select :priority, options_for_select(Ticket::Priorities.collect{|p| p.humanize}) %>
   </div>
   <div class="field">
     <%= f.label :subject %><br />
