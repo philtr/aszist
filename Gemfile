@@ -4,8 +4,6 @@ gem 'rails', '~> 3.1.0.rc4'
 
 # Application gems
 gem 'devise', '~> 1.4.2'
-gem 'cancan', '~> 1.6.5'
-gem 'roles_generic', '~> 0.3.9'
 
 gem 'sqlite3', '~> 1.3.3'
 
