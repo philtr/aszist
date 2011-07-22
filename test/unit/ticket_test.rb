@@ -52,4 +52,28 @@ class TicketTest < ActiveSupport::TestCase
       "Returned incorrect number of tickets (#{Ticket.closed_tickets.count})."
   end
 
+  test "should return an array of all tickets with priority 'low'" do
+    @ticket_one = valid_ticket(:pending_low)
+    @ticket_two = valid_ticket(:pending_high)
+    @ticket_three = valid_ticket(:open_low)
+    assert Ticket.low_priority.count == 2,
+      "Returned incorrect number of tickets (#{Ticket.pending_tickets.count})."
+  end
+
+  test "should return an array of all tickets with priority 'open'" do
+    @ticket_one = valid_ticket(:open_low)
+    @ticket_two = valid_ticket(:open_high)
+    @ticket_three = valid_ticket(:closed_low)
+    assert Ticket.open_tickets.count == 2,
+      "Returned incorrect number of tickets (#{Ticket.open_tickets.count})."
+  end
+
+  test "should return an array of all tickets with priority 'closed'" do
+    @ticket_one = valid_ticket(:closed_low)
+    @ticket_two = valid_ticket(:closed_high)
+    @ticket_three = valid_ticket(:pending_low)
+    assert Ticket.closed_tickets.count == 2,
+      "Returned incorrect number of tickets (#{Ticket.closed_tickets.count})."
+  end
+
 end
