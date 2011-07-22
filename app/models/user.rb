@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  def to_s
+    if(self.first_name || self.last_name)
+      return [self.first_name, self.last_name].join(" ")
+    else
+      return self.email
+    end
+  end
+
 end
