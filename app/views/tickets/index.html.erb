@@ -1,14 +1,24 @@
 <h1>Your tickets</h1>
 
 <table>
-<% @tickets.each do |ticket| %>
-  <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even') %> <%= ticket.priority %> <%= ticket.status %>">
-    <td class="date"><%= ticket.date %></td>
-    <td class="subject"><%= link_to ticket.subject, url_for(ticket) %></td>
-    <td class="priority"><%= ticket.priority %></td>
-    <td class="status"><%= ticket.status %></td>
-  </tr>
-<% end %>
+
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Subject</th>
+      <th>Priority</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <% @tickets.each do |ticket| %>
+    <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even') %> <%= ticket.priority %> <%= ticket.status %>">
+      <td class="date"><%= ticket.date %></td>
+      <td class="subject"><%= link_to ticket.subject, url_for(ticket) %></td>
+      <td class="priority"><%= ticket.priority %></td>
+      <td class="status"><%= ticket.status.humanize %></td>
+    </tr>
+  <% end %>
 </table>
 
 <br />
