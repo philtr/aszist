@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where(:user_id => current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +43,9 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(params[:ticket])
+
+    @ticket.user = current_user if @ticket.user.nil?
+    @ticket.agent = User.default_agent if @ticket.agent.nil?
 
     respond_to do |format|
       if @ticket.save
