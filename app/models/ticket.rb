@@ -15,6 +15,8 @@ class Ticket < ActiveRecord::Base
 
   before_validation :set_pending, :create_user
 
+  default_scope :order => "created_at DESC"
+
   scope :pending_tickets, where(:status => "pending")
   scope :open_tickets,    where(:status => "open")
   scope :closed_tickets,  where(:status => "closed")
