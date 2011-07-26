@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
+  check_authorization
 
   # GET /tickets
   # GET /tickets.json

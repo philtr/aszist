@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
+  ROLES = %w[customer agent admin]
+
   def self.default_agent
     # TODO: Make this configurable in the app
     User.first
@@ -20,6 +22,10 @@ class User < ActiveRecord::Base
     else
       return self.email
     end
+  end
+
+  def role?(base_role)
+    ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
 end
