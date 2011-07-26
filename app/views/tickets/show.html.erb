@@ -27,7 +27,7 @@
 
 <p>
   <b>Body:</b>
-  <%= @ticket.body %>
+  <%=markdownify @ticket.body %>
 </p>
 
 
@@ -41,7 +41,7 @@
   <strong><%= comment.user %></strong><br/>
   <%= comment.created_at.strftime("%I:%M%p %b %d") %>
 </p>
-<%= comment.body %>
+<%=markdownify comment.body %>
 </p>
 <hr/>
 <% end %>
@@ -49,5 +49,6 @@
 <h3>Add a new comment</h3>
 <%= form_for [@ticket, @comment] do |f| %>
   <p><%= f.text_area :body %></p>
+  <p><em>Processed with Markdown</em></p>
   <p><%= f.submit "Add Comment" %></p>
 <% end %>

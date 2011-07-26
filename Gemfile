@@ -6,6 +6,7 @@ gem 'rails', '~> 3.1.0.rc5'
 gem 'devise', '~> 1.4.2'
 gem 'cancan'
 gem 'paper_trail'
+gem 'redcarpet'
 gem 'simple_form'
 
 gem 'sqlite3', '~> 1.3.3'
