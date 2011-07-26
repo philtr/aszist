@@ -1,29 +1,13 @@
-<%= form_for(@ticket) do |f| %>
-  <% if @ticket.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+<%= simple_form_for(@ticket) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @ticket.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="inputs">
+    <%= f.input :priority, :collection => Ticket::Priorities.collect{|p| p.humanize }, :prompt => false %>
+    <%= f.input :subject %>
+    <%= f.input :body %>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :priority %><br />
-    <%= f.select :priority, options_for_select(Ticket::Priorities.collect{|p| p.humanize}) %>
-  </div>
-  <div class="field">
-    <%= f.label :subject %><br />
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>

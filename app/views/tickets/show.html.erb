@@ -33,3 +33,21 @@
 
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
+
+<h2>Comments</h2>
+
+<% @ticket.comments.each do |comment| %>
+<p>
+  <strong><%= comment.user %></strong><br/>
+  <%= comment.created_at.strftime("%I:%M%p %b %d") %>
+</p>
+<%= comment.body %>
+</p>
+<hr/>
+<% end %>
+
+<h3>Add a new comment</h3>
+<%= form_for [@ticket, @comment] do |f| %>
+  <p><%= f.text_area :body %></p>
+  <p><%= f.submit "Add Comment" %></p>
+<% end %>

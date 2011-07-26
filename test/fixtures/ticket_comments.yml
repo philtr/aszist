@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ticket: 
+  user: 
+  body: MyText
+
+two:
+  ticket: 
+  user: 
+  body: MyText

@@ -1,5 +1,7 @@
 Aszist::Application.routes.draw do
-  resources :tickets
+  resources :tickets do
+    resources :comments
+  end
 
   devise_for :users
 

@@ -1,11 +1,11 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
-  check_authorization
+  # check_authorization
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.where(:user_id => current_user.id)
+    @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +17,7 @@ class TicketsController < ApplicationController
   # GET /tickets/1.json
   def show
     @ticket = Ticket.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb

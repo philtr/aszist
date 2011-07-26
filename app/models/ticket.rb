@@ -1,6 +1,11 @@
 class Ticket < ActiveRecord::Base
   belongs_to :user
   belongs_to :agent, :class_name => "User"
+  has_many :comments
+
+  accepts_nested_attributes_for :comments
+
+  has_paper_trail
 
   Statuses = ["pending","open","closed"]
   Priorities = ["low","medium","high"]
