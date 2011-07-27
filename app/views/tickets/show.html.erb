@@ -1,38 +1,28 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to raw('&larr; Back'), tickets_path %>
+<% if current_user.role? :agent %>| <%= link_to 'Edit', edit_ticket_path(@ticket) %><% end %>
+
 <p>
   <b>User:</b>
   <%= @ticket.user %>
-</p>
-
-<p>
+<br/>
   <b>Agent:</b>
   <%= @ticket.agent %>
-</p>
-
-<p>
+<br/>
   <b>Priority:</b>
   <%= @ticket.priority %>
-</p>
-
-<p>
+<br/>
   <b>Status:</b>
   <%= @ticket.status %>
-</p>
-
-<p>
+<br/>
   <b>Subject:</b>
   <%= @ticket.subject %>
 </p>
 
-<p>
-  <b>Body:</b>
-  <%=markdownify @ticket.body %>
-</p>
+<%=markdownify @ticket.body %>
 
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+<hr/>
 
 <h2>Comments</h2>
 

@@ -2,7 +2,11 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :priority, :collection => Ticket::Priorities.collect{|p| p.humanize }, :prompt => false %>
+    <%= f.input :priority, :collection => Ticket::Priorities.collect{|p| [p.humanize, p] }, :prompt => false %>
+    <% if current_user.role? :agent %>
+      <%= f.input :status, :collection => Ticket::Statuses.collect{|s| [s.humanize, s] }, :prompt => false %>
+      <%= f.input :agent_id, :collection => User.agents.collect{|a| [a.to_s, a.id]}, :prompt => false %>
+    <% end %>
     <%= f.input :subject %>
     <%= f.input :body %>
 

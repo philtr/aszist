@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :tickets
   has_many :comments
 
+  before_create :set_default_role
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -9,6 +11,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me
+
+  scope :agents, where("role = ? OR ?", "agent", "admin")
+  scope :admins, where(:role => "admin")
 
   ROLES = %w[customer agent admin]
 
@@ -27,6 +32,12 @@ class User < ActiveRecord::Base
 
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
+private
+
+  def set_default_role
+    self.role = ROLES[0]
   end
 
 end
