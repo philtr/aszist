@@ -36,7 +36,9 @@ div {
   display: table; }
 
 label {
-  display: block; }
+  display: block;
+  input[type=checkbox] + & {
+     display: inline; }}
 
 #error_explanation {
   width: 450px;
