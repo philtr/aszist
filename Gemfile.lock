@@ -58,6 +58,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    mysql (2.8.1)
     orm_adapter (0.0.5)
     paper_trail (2.2.9)
       rails (~> 3)
@@ -126,6 +127,7 @@ DEPENDENCIES
   coffee-script (~> 2.2.0)
   devise (~> 1.4.2)
   jquery-rails (~> 1.0.12)
+  mysql
   paper_trail
   rails (~> 3.1.0.rc5)
   redcarpet
