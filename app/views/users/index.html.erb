@@ -1,0 +1,40 @@
+<h1>Users</h1>
+
+<%= form_tag '/users/manage' do %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user, index| %>
+      <tr class="<%= cycle("odd","even") %>">
+        <%= hidden_field_tag "users[][id]", user.id %>
+        <td><%# TODO: checkbox for delete user %></td>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <% if user == current_user %>
+        <td><%= user.role.humanize %></td>
+        <td></td>
+        <% else %>
+        <td><%= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role) %></td>
+        <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <% end %>
+
+      </tr>
+    <% end %>
+      <tr style="border-top: 1px solid #ccc">
+        <td colspan="4"></td>
+        <td><%= submit_tag "Update Users" %></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+<% end %>

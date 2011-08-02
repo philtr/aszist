@@ -1,0 +1,14 @@
+<%= simple_form_for(@user) do |f| -%>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :role, :collection => User::ROLES.collect {|r| [r.humanize, r]}, :prompt => false %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end -%>

@@ -22,11 +22,15 @@ class User < ActiveRecord::Base
     User.first
   end
 
+  def name
+    return [self.first_name, self.last_name].join(" ").to_s
+  end
+
   def to_s
-    if(self.first_name || self.last_name)
-      return [self.first_name, self.last_name].join(" ")
-    else
+    if self.name.to_s.empty?
       return self.email
+    else
+      return self.name
     end
   end
 
