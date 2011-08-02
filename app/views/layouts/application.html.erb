@@ -8,13 +8,12 @@
 </head>
 <body class="<%= controller.controller_name %>">
 
-  <div id="user_actions">
-    <%= render 'devise/menu/login_items' %>
+  <%= render 'layouts/navigation' %>
+
+  <div id="container">
+    <div id="notice"><%= flash[:notice] %></div>
+    <%= yield %>
   </div>
-
-  <div id="notice"><%= flash[:notice] %></div>
-
-  <%= yield %>
 
 </body>
 </html>
