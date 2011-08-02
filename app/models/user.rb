@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    return [self.first_name, self.last_name].join(" ").to_s
+    return [self.first_name, self.last_name].join(" ").lstrip
   end
 
   def to_s
