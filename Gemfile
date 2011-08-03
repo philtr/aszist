@@ -5,6 +5,7 @@ gem 'rails', '~> 3.1.0.rc5'
 # Application gems
 gem 'devise', '~> 1.4.2'
 gem 'cancan'
+gem 'mailman'
 gem 'mysql'
 gem 'paper_trail'
 gem 'redcarpet'
