@@ -15,6 +15,7 @@ class Ticket < ActiveRecord::Base
   validates :priority, :inclusion => { :in => Ticket::Priorities }
 
   before_validation :set_pending, :create_user
+  before_create :generate_token
 
   default_scope :order => "created_at DESC"
 
@@ -41,6 +42,12 @@ private
     if self.user.nil?
       # TODO: Create new user for email and assign to ticket
     end
+  end
+
+  def generate_token
+    begin
+      self.token = SecureRandom.hex(32)
+    end while Ticket.find_by_token(self.token)
   end
 
 end

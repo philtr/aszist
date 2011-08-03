@@ -9,6 +9,24 @@ Mailman.config.pop3 = {
 }
 
 Mailman::Application.run do
-  to "support@spt.la", TicketMailer
-  to "support+%token%@spt.la", TicketMailer
+  to "support+%token%@spt.la" do
+    ticket = Ticket.find_by_token(params[:token])
+    puts "Found ticket with token #{ticket.token}"
+    user = User.find_by_email(message.from)
+    puts "Found user for #{message.from}"
+
+
+    if message.multipart?
+      mail.parts.each do |part|
+        body = part.body.decoded if part.type == 'text/plain'
+      end
+    else
+      body = message.body.decoded
+    end
+
+    ticket.comments.new
+    ticket.user = user
+    ticket.body = message.from
+    ticket.save
+  end
 end

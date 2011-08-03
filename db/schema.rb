@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726194608) do
+ActiveRecord::Schema.define(:version => 20110803224849) do
 
   create_table "comments", :force => true do |t|
     t.integer  "ticket_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110726194608) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
   add_index "tickets", ["agent_id"], :name => "index_tickets_on_agent_id"

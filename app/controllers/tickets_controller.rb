@@ -5,7 +5,11 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id)
+    if can? :manage, Ticket
+      @tickets = Ticket.all
+    else
+      @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
