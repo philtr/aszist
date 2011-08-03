@@ -17,16 +17,16 @@ Mailman::Application.run do
 
 
     if message.multipart?
-      mail.parts.each do |part|
-        body = part.body.decoded if part.type == 'text/plain'
+      message.parts.each do |part|
+        body = part.body.decoded if part.content_type == 'text/plain'
       end
     else
       body = message.body.decoded
     end
 
-    ticket.comments.new
-    ticket.user = user
-    ticket.body = message.from
-    ticket.save
+    comment = ticket.comments.new
+    comment.user = user
+    comment.body = body
+    comment.save
   end
 end
