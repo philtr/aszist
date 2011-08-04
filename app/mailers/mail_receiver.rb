@@ -23,6 +23,7 @@ class MailReceiver
     comment.body.split("\n").each do |line|
       puts "       #{line}"
     end
+    puts "\n"
   end
 
   def create_ticket(message)
