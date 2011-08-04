@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/titanous/mailman.git
+  revision: a910afbd98f1813415725c80670f28fd1188f110
+  ref: a910afbd98f181341572
+  specs:
+    mailman (0.4.0)
+      activesupport (>= 2.3.4)
+      fssm (>= 0.1.4)
+      i18n (>= 0.4.1)
+      mail (>= 2.0.3)
+      maildir (>= 0.5.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -58,12 +70,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     maildir (1.0.1)
-    mailman (0.4.0)
-      activesupport (>= 2.3.4)
-      fssm (>= 0.1.4)
-      i18n (>= 0.4.1)
-      mail (>= 2.0.3)
-      maildir (>= 0.5.0)
     mime-types (1.16)
     multi_json (1.0.3)
     mysql (2.8.1)
@@ -135,7 +141,7 @@ DEPENDENCIES
   coffee-script (~> 2.2.0)
   devise (~> 1.4.2)
   jquery-rails (~> 1.0.12)
-  mailman
+  mailman!
   mysql
   paper_trail
   rails (~> 3.1.0.rc5)

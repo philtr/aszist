@@ -5,7 +5,8 @@ gem 'rails', '~> 3.1.0.rc5'
 # Application gems
 gem 'devise', '~> 1.4.2'
 gem 'cancan'
-gem 'mailman'
+gem 'mailman', :git => 'git://github.com/titanous/mailman.git',
+               :ref => 'a910afbd98f181341572'
 gem 'mysql'
 gem 'paper_trail'
 gem 'redcarpet'
