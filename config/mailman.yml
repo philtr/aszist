@@ -1,0 +1,13 @@
+pop3:
+  username: <%= ENV["MAILMAN_USERNAME"] %>
+  password: <%= ENV["MAILMAN_PASSWORD"] %>
+  server: <%= ENV["MAILMAN_SERVER"] %>
+  port: <%= ENV["MAILMAN_PORT"] %>
+  ssl: <%= ENV["MAILMAN_SSL"] %>
+
+poll_interval: <%= ENV["MAILMAN_POLL_INTERVAL"] %>
+
+email:
+  support:
+    user: "support"
+    domain: <%= ENV["MAILMAN_DOMAIN"] %>

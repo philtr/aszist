@@ -1,15 +1,17 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 
+config = Hashie::Mash.new(YAML::load(ERB.new(File.read('config/mailman.yml')).result))
+
 Mailman.config.pop3 = {
-  :username => ENV["MAILMAN_USERNAME"],
-  :password => ENV["MAILMAN_PASSWORD"],
-  :server   => ENV["MAILMAN_SERVER"],
-  :port     => ENV["MAILMAN_PORT"], # defaults to 110
-  :ssl      => Proc.new { eval(ENV["MAILMAN_SSL"]) if ["true","false"].include? ENV["MAILMAN_SSL"] }
+  :username => config.pop3.username,
+  :password => config.pop3.password,
+  :server   => config.pop3.server,
+  :port     => config.pop3.port, # defaults to 110
+  :ssl      => config.pop3.ssl
 }
 
 Mailman.config.poll_interval = 20
 
 Mailman::Application.run do
-  to "support+%token%@spt.la", 'MailReceiver#add_comment'
+  to "#{config.email.support.user}+%token%@#{config.email.support.domain}", 'MailReceiver#add_comment'
 end
