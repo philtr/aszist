@@ -15,7 +15,7 @@ class MailReceiver
     comment.body = body
     comment.save
 
-    puts "---> Added comment to Ticket \##{ticket.id}: #{ticket.subject}"
+    puts "  ---> Added comment to Ticket \##{ticket.id}: #{ticket.subject}"
   end
 
   def create_ticket(message)
