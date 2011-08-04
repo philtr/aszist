@@ -7,6 +7,10 @@ pop3:
 
 poll_interval: <%= ENV["MAILMAN_POLL_INTERVAL"] %>
 
+logger:
+  use_logfile: false
+  logfile: 'log/mailman.log'
+
 email:
   support:
     user: "support"

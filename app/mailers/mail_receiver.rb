@@ -3,6 +3,8 @@ class MailReceiver
     ticket = Ticket.find_by_token(params[:token])
     user = User.find_by_email(message.from)
 
+    return if ticket.nil? || user.nil?
+
     if message.multipart?
       body = message.text_part.body.to_s
     else

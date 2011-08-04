@@ -2,6 +2,8 @@ require ::File.expand_path('../config/environment',  __FILE__)
 
 config = Hashie::Mash.new(YAML::load(ERB.new(File.read('config/mailman.yml')).result))
 
+Mailman.config.logger = Logger.new(config.logger.logfile) if config.logger.use_logfile
+
 Mailman.config.pop3 = {
   :username => config.pop3.username,
   :password => config.pop3.password,
