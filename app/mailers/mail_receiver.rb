@@ -17,7 +17,12 @@ class MailReceiver
     comment.body = body
     comment.save
 
-    puts "  ---> Added comment to Ticket \##{ticket.id}: #{ticket.subject}"
+    puts "  ---> Added comment to Ticket \##{ticket.id}: "
+    puts "       From: #{user.name} <#{user.email}>"
+    puts "       Subject: #{ticket.subject}\n"
+    comment.body.split("\n").each do |line|
+      puts "       #{line}"
+    end
   end
 
   def create_ticket(message)
