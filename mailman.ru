@@ -8,6 +8,8 @@ Mailman.config.pop3 = {
   :ssl      => Proc.new { eval(ENV["MAILMAN_SSL"]) if ["true","false"].include? ENV["MAILMAN_SSL"] }
 }
 
+Mailman.config.poll_interval = 20
+
 Mailman::Application.run do
   to "support+%token%@spt.la" do
     ticket = Ticket.find_by_token(params[:token])
@@ -15,16 +17,14 @@ Mailman::Application.run do
     user = User.find_by_email(message.from)
     puts "Found user for #{message.from}"
 
-
     if message.multipart?
-      message.parts.each do |part|
-        body = part.body.decoded if part.content_type == 'text/plain'
-      end
+      body = message.text_part.body.to_s
     else
-      body = message.body.decoded
+      body = message.body.to_s
     end
 
-    comment = ticket.comments.new
+    comment = Comment.new
+    comment.ticket = ticket
     comment.user = user
     comment.body = body
     comment.save
