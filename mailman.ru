@@ -11,22 +11,5 @@ Mailman.config.pop3 = {
 Mailman.config.poll_interval = 20
 
 Mailman::Application.run do
-  to "support+%token%@spt.la" do
-    ticket = Ticket.find_by_token(params[:token])
-    puts "Found ticket with token #{ticket.token}"
-    user = User.find_by_email(message.from)
-    puts "Found user for #{message.from}"
-
-    if message.multipart?
-      body = message.text_part.body.to_s
-    else
-      body = message.body.to_s
-    end
-
-    comment = Comment.new
-    comment.ticket = ticket
-    comment.user = user
-    comment.body = body
-    comment.save
-  end
+  to "support+%token%@spt.la", 'MailReceiver#add_comment'
 end
