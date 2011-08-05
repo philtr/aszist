@@ -16,6 +16,7 @@ class Ticket < ActiveRecord::Base
   validates :token, :presence => true, :uniqueness => true
 
   before_validation :set_pending,
+                    :set_default_priority,
                     :create_user,
                     :generate_token
 
@@ -37,7 +38,11 @@ class Ticket < ActiveRecord::Base
 private
 
   def set_pending
-    self.status = "pending" if self.status.to_s.empty?
+    self.status = Statuses.first if self.status.to_s.empty?
+  end
+
+  def set_default_priority
+    self.priority = Priorities.first if self.priority.nil?
   end
 
   def create_user
