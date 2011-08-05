@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   def self.default_agent
     # TODO: Make this configurable in the app
-    User.first
+    User.agents.first
   end
 
   def name
