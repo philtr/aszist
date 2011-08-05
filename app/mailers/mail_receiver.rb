@@ -5,6 +5,10 @@ class MailReceiver
 
     return if ticket.nil? || user.nil?
 
+    unless user.role?(:admin)
+      return if (ticket.user != user) and (ticket.agent != user)
+    end
+
     if message.multipart?
       body = message.text_part.body.to_s
     else
