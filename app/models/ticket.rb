@@ -45,9 +45,12 @@ private
   end
 
   def generate_token
-    begin
-      self.token = SecureRandom.hex(16)
-    end while Ticket.find_by_token(self.token)
+    if self.token.nil?
+      begin
+        random_token = SecureRandom.hex(16)
+      end while Ticket.find_by_token(random_token) == []
+      self.token = random_token
+    end
   end
 
 end
