@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
   Statuses = ["pending","open","closed"]
   Priorities = ["low","medium","high"]
 
-  validates :user_id, :presence => true
+  validates :user, :presence => true
   validates :status, :inclusion => { :in => Ticket::Statuses }
   validates :priority, :inclusion => { :in => Ticket::Priorities }
 
