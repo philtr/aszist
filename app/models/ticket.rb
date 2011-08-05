@@ -13,6 +13,7 @@ class Ticket < ActiveRecord::Base
   validates :user, :presence => true
   validates :status, :inclusion => { :in => Ticket::Statuses }
   validates :priority, :inclusion => { :in => Ticket::Priorities }
+  validates :token, :presence => true, :uniqueness => true
 
   before_validation :set_pending, :create_user
   before_create :generate_token
