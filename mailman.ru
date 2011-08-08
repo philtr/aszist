@@ -15,6 +15,6 @@ Mailman.config.pop3 = {
 Mailman.config.poll_interval = config.poll_interval
 
 Mailman::Application.run do
-  to "#{config.email.support.user}+%token%@#{config.email.support.domain}", 'MailReceiver#add_comment'
-  to "#{config.email.support.user}@#{config.email.support.domain}", 'MailReceiver#create_ticket'
+  to "#{config.email.support.user}+%token%@#{config.email.support.domain}", 'TicketReceiver#add_comment'
+  to "#{config.email.support.user}@#{config.email.support.domain}", 'TicketReceiver#create_ticket'
 end

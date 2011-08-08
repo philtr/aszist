@@ -1,4 +1,4 @@
-class MailReceiver
+class TicketReceiver
   def add_comment(message, params)
     ticket = Ticket.find_by_token(params[:token])
     user = User.find_by_email(message.from)
