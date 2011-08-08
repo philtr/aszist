@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <%= link_to raw('&larr; Back'), tickets_path %>
 <% if current_user.role? :agent %>| <%= link_to 'Edit', edit_ticket_path(@ticket) %><% end %>
 
