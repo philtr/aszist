@@ -15,7 +15,10 @@ class UsersController < ApplicationController
         @user.save
       end
     end
-    redirect_to({:action => "index"}, :notice => "Users updated successfully")
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'Users successfully updated.' }
+      format.json { head :ok }
+    end
   end
   def edit
     @user = User.find(params[:id])
