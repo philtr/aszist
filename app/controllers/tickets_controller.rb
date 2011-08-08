@@ -6,9 +6,9 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     if can? :manage, Ticket
-      @tickets = Ticket.all
+      @tickets = Ticket.all.group_by {|ticket| ticket.status }
     else
-      @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id)
+      @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id).group_by {|ticket| ticket.status }
     end
 
     respond_to do |format|

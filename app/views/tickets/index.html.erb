@@ -1,25 +1,32 @@
-<h1>Your tickets</h1>
+<% Ticket::Statuses.each do |status| %>
+  <% unless @tickets[status].to_s.empty? %>
+    <h1><%= status.humanize %> tickets</h1>
 
-<table>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Subject</th>
+          <th>Priority</th>
+          <th>Status</th>
+        </tr>
+      </thead>
 
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Subject</th>
-      <th>Priority</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-
-  <% @tickets.each do |ticket| %>
-    <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even') %> <%= ticket.priority %> <%= ticket.status %>">
-      <td class="date"><%= ticket.date %></td>
-      <td class="subject"><%= link_to ticket.subject, url_for(ticket) %></td>
-      <td class="priority"><%= ticket.priority %></td>
-      <td class="status"><%= ticket.status.humanize %></td>
-    </tr>
+      <% tickets = @tickets[status].group_by {|t| t.priority }; Ticket::Priorities.reverse.each do |priority| %>
+        <% unless tickets[priority].to_s.empty? %>
+          <% tickets[priority].each do |ticket| %>
+            <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even') %> <%= ticket.priority %> <%= ticket.status %>">
+              <td class="date"><%= ticket.date %></td>
+              <td class="subject"><%= link_to ticket.subject, url_for(ticket) %></td>
+              <td class="priority"><%= ticket.priority %></td>
+              <td class="status"><%= ticket.status.humanize %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </table>
   <% end %>
-</table>
+<% end %>
 
 <br />
 
