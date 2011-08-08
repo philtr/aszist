@@ -21,43 +21,43 @@ class TicketReceiver
     comment.body = body
     comment.save
 
-    puts "  ---> Added comment to Ticket \##{ticket.id}: "
-    puts "       From: #{user.name} <#{user.email}>"
-    puts "       Subject: #{ticket.subject}\n"
+    Mailman.logger.info "  ---> Added comment to Ticket \##{ticket.id}: "
+    Mailman.logger.info "       From: #{user.name} <#{user.email}>"
+    Mailman.logger.info "       Subject: #{ticket.subject}\n"
   end
 
   def create_ticket(message, params)
-    puts " ---> Looking for user with email #{message.from}"
+    Mailman.logger.info " ---> Looking for user with email #{message.from}"
     user = User.find_by_email(message.from)
-    puts "      Found user: #{user.name} <#{user.email}>"
+    Mailman.logger.info "      Found user: #{user.name} <#{user.email}>"
 
     if message.multipart?
-      puts " ---> Message is multipart, grabbing the text part"
+      Mailman.logger.info " ---> Message is multipart, grabbing the text part"
       body = message.text_part.body.to_s
     else
-      puts " ---> Message is plain text, grabbing the body"
+      Mailman.logger.info " ---> Message is plain text, grabbing the body"
       body = message.body.to_s
     end
 
 
-    puts " ---> Creating new Ticket"
+    Mailman.logger.info " ---> Creating new Ticket"
     ticket = Ticket.new
-    puts "      Ticket initialized"
+    Mailman.logger.info "      Ticket initialized"
     ticket.user = user
-    puts "      Set user: #{ticket.user.name} <#{ticket.user.email}>"
+    Mailman.logger.info "      Set user: #{ticket.user.name} <#{ticket.user.email}>"
     ticket.agent = User.default_agent
-    puts "      Assign to default agent: #{ticket.agent.name} <#{ticket.agent.email}>"
+    Mailman.logger.info "      Assign to default agent: #{ticket.agent.name} <#{ticket.agent.email}>"
     ticket.subject = message.subject
-    puts "      Set subject: #{ticket.subject}"
+    Mailman.logger.info "      Set subject: #{ticket.subject}"
     ticket.body = body
-    puts "      Set the body."
+    Mailman.logger.info "      Set the body."
 
     if ticket.save
-      puts " ---> Successfully created Ticket \##{ticket.id}"
-      puts "      From: #{user.name} <#{user.email}>"
-      puts "      Subject: #{ticket.subject}"
+      Mailman.logger.info " ---> Successfully created Ticket \##{ticket.id}"
+      Mailman.logger.info "      From: #{user.name} <#{user.email}>"
+      Mailman.logger.info "      Subject: #{ticket.subject}"
     else
-      puts " ---> Could not create Ticket."
+      Mailman.logger.info " ---> Could not create Ticket."
     end
   end
 end
