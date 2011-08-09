@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   def index
     if can? :manage, User
-      @users = User.all
+      @users = User.all.group_by{|u| u.role }
     else
       redirect_to :root
     end

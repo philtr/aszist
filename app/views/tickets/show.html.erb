@@ -1,5 +1,4 @@
-<%= link_to raw('&larr; Back'), tickets_path %>
-<% if current_user.role? :agent %>| <%= link_to 'Edit', edit_ticket_path(@ticket) %><% end %>
+<%= link_to raw('&larr; Back to Tickets'), tickets_path %>
 
 <p>
   <b>User:</b>
@@ -25,13 +24,11 @@
 <h2>Comments</h2>
 
 <% @ticket.comments.each do |comment| %>
-<p>
-  <strong><%= comment.user %></strong><br/>
-  <%= comment.created_at.strftime("%I:%M%p %b %d") %>
-</p>
-<%=markdownify comment.body %>
-</p>
-<hr/>
+<div class="comment group <%= cycle('odd', 'even') %>">
+<strong><%= comment.user %></strong><br/>
+<%= comment.created_at.strftime("%I:%M%p %b %d") %>
+<p><%=markdownify comment.body %></p>
+</div>
 <% end %>
 
 <h3>Add a new comment</h3>

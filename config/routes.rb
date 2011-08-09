@@ -2,6 +2,8 @@ Aszist::Application.routes.draw do
 
   devise_for :users
 
+  match '/flashitbaby' => 'pages#flashitbaby'
+
   resources :tickets do
     resources :comments
   end
