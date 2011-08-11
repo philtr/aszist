@@ -25,18 +25,19 @@
 
 <% @ticket.comments.each do |comment| %>
 <div class="comment group <%= cycle('odd', 'even') %>">
-<strong><%= comment.user %></strong><br/>
+<strong><%= comment.user %></strong>
+<%=raw("<em>(Sent to user)</em>") if comment.sent_to_user? %><br/>
 <%= comment.created_at.strftime("%I:%M%p %b %d") %>
 <p><%=markdownify comment.body %></p>
 </div>
 <% end %>
 
 <h3>Add a new comment</h3>
-<%= form_for [@ticket, @comment] do |f| %>
-  <p><%= f.text_area :body %></p>
+<%= simple_form_for [@ticket, @comment] do |f| %>
+  <p><%= f.input :body %></p>
   <p><em>Processed with Markdown</em></p>
   <% if current_user.role?(:agent) %>
-  <p><%= check_box_tag 'send_to_user' %> <%= label_tag 'send_to_user' %></p>
+  <p><%= f.input :sent_to_user, :label => "Send to user" %></p>
   <% end %>
   <p><%= f.submit "Add Comment" %></p>
 <% end %>

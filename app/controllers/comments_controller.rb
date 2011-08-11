@@ -9,10 +9,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.ticket = Ticket.find(params[:ticket_id])
     if @comment.save
-      if params[:send_to_user] == "1"
-        # TODO: send message via ActionMailer
+      if @comment.sent_to_user?
         TicketMailer.agent_reply(@comment).deliver
-        # render :text => "MESSAGE SENT TO USER>>> LOLJK NOT REALLY!\n\n#{Redcarpet.new(@comment.body).to_html}" and return
       end
       redirect_to(@comment.ticket)
     end

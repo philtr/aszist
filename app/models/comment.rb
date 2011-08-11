@@ -3,6 +3,10 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   before_create :strip_out_reply_and_signature
+  
+  def sent_to_user?
+    self.sent_to_user
+  end
 
 private
 

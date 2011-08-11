@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803224849) do
+ActiveRecord::Schema.define(:version => 20110810231028) do
 
   create_table "comments", :force => true do |t|
     t.integer  "ticket_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110803224849) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sent_to_user", :default => false
   end
 
   add_index "comments", ["ticket_id"], :name => "index_ticket_comments_on_ticket_id"
