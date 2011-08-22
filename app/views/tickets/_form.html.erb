@@ -2,11 +2,12 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :priority, :collection => Ticket::Priorities.collect{|p| [p.humanize, p] }, :prompt => false %>
-    <% if current_user.role? :agent %>
-      <%= f.input :status, :collection => Ticket::Statuses.collect{|s| [s.humanize, s] }, :prompt => false %>
+    <% if can? :manage, @ticket %>
       <%= f.input :agent_id, :collection => User.agents.collect{|a| [a.to_s, a.id]}, :prompt => false %>
+      <%= f.input :status, :collection => Ticket::Statuses.collect{|s| [s.humanize, s] }, :prompt => false %>
     <% end %>
+    <%= f.input :priority, :collection => Ticket::Priorities.collect{|p| [p.humanize, p] }, :prompt => false %>
+
     <%= f.input :subject %>
     <%= f.input :body %>
 

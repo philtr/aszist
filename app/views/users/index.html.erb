@@ -8,40 +8,44 @@
       <%- reset_cycle("row") -%>
       <div class="group <%= cycle("odd","even", :name => "group") %>">
       <h3><%= role.pluralize.humanize %></h3>
-      <% @users[role].each do |user| %>
-        <table>
-          <thead>
-            <tr>
-              <th class="id">ID</th>
-              <th class="email">Email</th>
-              <th class="name">Name</th>
-              <th class="role">Role</th>
-              <th class="actions">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-        <tr class="<%= cycle("odd","even", :name => "row") %>">
-          <%= hidden_field_tag "users[][id]", user.id %>
-          <td class="id"><%= user.id %></td>
-          <td class="email"><%= user.email %></td>
-          <td class="name"><%= user.name %></td>
-          <% if user == current_user %>
-          <td class="role"><%= user.role.humanize %></td>
-          <td class="actions"></td>
-          <% else %>
-          <td class="role"><%= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role) %></td>
-          <td class="actions">
-            <%= link_to "Edit", edit_user_path(user) %>
-            <%= link_to "Delete", :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %>
-          </td>
-        <% end unless @users[role].empty? %>
-      <% end %>
+      <%- if @users[role].to_s.empty? -%>
+        <p>There are no users with this role.</p>
+      <%- else -%>
+        <% @users[role].each do |user| %>
+          <table>
+            <thead>
+              <tr>
+                <th class="id">ID</th>
+                <th class="email">Email</th>
+                <th class="name">Name</th>
+                <th class="role">Role</th>
+                <th class="actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr class="<%= cycle("odd","even", :name => "row") %>">
+            <%= hidden_field_tag "users[][id]", user.id %>
+            <td class="id"><%= user.id %></td>
+            <td class="email"><%= user.email %></td>
+            <td class="name"><%= user.name %></td>
+            <% if user == current_user %>
+            <td class="role"><%= user.role.humanize %></td>
+            <td class="actions"></td>
+            <% else %>
+            <td class="role"><%= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role) %></td>
+            <td class="actions">
+              <%= link_to "Edit", edit_user_path(user) %>
+              <%= link_to "Delete", :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %>
+            </td>
+          <% end unless @users[role].empty? %>
+        <% end %>
 
-      </tr>
-      </tbody>
-    </table>
+        </tr>
+        </tbody>
+      </table>
+      <% end %>
     </div>
-    <% end %>
+    <%- end -%>
     <p><%= submit_tag "Update Users" %></p>
 
 <% end %>

@@ -1,17 +1,17 @@
 <%= link_to raw('&larr; Back to Tickets'), tickets_path %>
 
 <p>
-  <b>User:</b>
+  <b>From:</b>
   <%= @ticket.user %>
 <br/>
-  <b>Agent:</b>
-  <%= @ticket.agent %>
-<br/>
-  <b>Priority:</b>
-  <%= @ticket.priority %>
+  <b>Assigned to:</b>
+  <%= @ticket.agent %> (<%= link_to "Change", edit_ticket_path(@ticket) %>)
 <br/>
   <b>Status:</b>
-  <%= @ticket.status %>
+  <%= @ticket.status.humanize %> (<%= link_to "Change", edit_ticket_path(@ticket) %>)
+<br/>
+  <b>Priority:</b>
+  <%= @ticket.priority.humanize %> (<%= link_to "Change", edit_ticket_path(@ticket) %>)
 <br/>
   <b>Subject:</b>
   <%= @ticket.subject %>
