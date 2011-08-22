@@ -1,22 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0.rc5'
+gem 'rails', '~> 3.1.0.rc6'
 
 # Application gems
 gem 'devise', '~> 1.4.2'
-gem 'cancan'
-gem 'hashie'
+gem 'cancan', '~> 1.6.5'
+gem 'hashie', '~> 1.1.0'
 gem 'mailman', :git => 'git://github.com/titanous/mailman.git',
-               :ref => 'a910afbd98f181341572'
-gem 'mysql'
-gem 'paper_trail'
-gem 'redcarpet'
-gem 'simple_form'
+               :ref => '83d7a69c3d0bf4fc72fa'
+gem 'mysql2', '~> 0.3.7' 
+gem 'paper_trail', '~> 2.2.9'
+gem 'redcarpet', '~> 2.0.0b3'
+gem 'simple_form', '~> 1.4.2'
 
-gem 'sqlite3', '~> 1.3.3'
+gem 'sqlite3', '~> 1.3.4'
 
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
+gem 'sass-rails', '~> 3.1.0.rc6'
 gem 'coffee-script', '~> 2.2.0'
 gem 'uglifier', '~> 1.0.0'
 

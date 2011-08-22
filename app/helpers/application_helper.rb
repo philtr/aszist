@@ -1,5 +1,7 @@
 module ApplicationHelper
+  include Redcarpet
   def markdownify(text)
-    raw ::Redcarpet.new(text, :smart, :filter_html, :hard_wrap).to_html
+    markdown = Markdown.new(Render::XHTML.new(:hard_wrap => true))
+    raw Render::SmartyPants.render(markdown.render(text))
   end
 end
