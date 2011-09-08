@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0.rc6'
+gem 'rails', '~> 3.1.0'
 
 # Application gems
 gem 'devise', '~> 1.4.2'
@@ -16,7 +16,7 @@ gem 'simple_form', '~> 1.4.2'
 gem 'sqlite3', '~> 1.3.4'
 
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc6'
+gem 'sass-rails', '~> 3.1.0'
 gem 'coffee-script', '~> 2.2.0'
 gem 'uglifier', '~> 1.0.0'
 
