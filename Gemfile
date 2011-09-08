@@ -23,6 +23,8 @@ gem 'uglifier', '~> 1.0.0'
 gem 'jquery-rails', '~> 1.0.12'
 gem 'therubyracer', '~> 0.9.2' # for execjs support
 
+gem 'mail_view', :git => 'https://github.com/37signals/mail_view'
+
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false

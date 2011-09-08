@@ -14,6 +14,10 @@ Aszist::Application.routes.draw do
     end
   end
 
+  if Rails.env.development?
+    mount TicketMailer::Preview => 'mail_view'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
