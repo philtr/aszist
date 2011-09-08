@@ -1,1 +1,7 @@
 <%= @comment.body %>
+
+---
+<%- @comment.ticket.comments.reverse[0,-2].each do |comment| -%>
+<%= comment.user %> wrote:
+<%= comment.body %>
+<%- end -%>

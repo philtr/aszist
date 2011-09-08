@@ -10,6 +10,15 @@ class TicketMailer < ActionMailer::Base
     mail(:to => @to, :from => @from, :subject => "Re: #{@comment.ticket.subject}")
   end
   
+  def notify_agent(ticket)
+    @ticket = ticket
+    @to = "#{@ticket.agent} <#{@ticket.agent.email}>"
+    @from = "#{@ticket.user} <#{@ticket.user.email}>"
+    @reply_to = "#{config.email.support.user}+#{@ticket.token}@#{config.email.support.domain}"
+    mail(:to => @to, :from => @from, :return_path => @reply_to,
+      :subject => "[aszist] #{@ticket.subject}")
+  end
+  
   class Preview < MailView
     def agent_reply
       bob = User.new(
