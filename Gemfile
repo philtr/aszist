@@ -7,7 +7,7 @@ gem 'devise', '~> 1.4.2'
 gem 'cancan', '~> 1.6.5'
 gem 'hashie', '~> 1.1.0'
 gem 'mailman', :git => 'git://github.com/titanous/mailman.git',
-               :ref => '83d7a69c3d0bf4fc72fa'
+               :ref => '70382c3c32bde0c6e225bee39bea17af7cdfe39a'
 gem 'mysql2', '~> 0.3.7' 
 gem 'paper_trail', '~> 2.2.9'
 gem 'redcarpet', '~> 2.0.0b3'
