@@ -44,9 +44,10 @@ class TicketReceiver
     ticket = Ticket.new
     Mailman.logger.info "      Ticket initialized"
     ticket.user = user
-    Mailman.logger.info "      Set user: #{ticket.user.name} <#{ticket.user.email}>"
-    ticket.agent = User.default_agent
-    Mailman.logger.info "      Assign to default agent: #{ticket.agent.name} <#{ticket.agent.email}>"
+    Mailman.logger.info "      Set user"
+    agent = User.default_agent
+    ticket.agent = agent
+    Mailman.logger.info "      Assign to default agent: #{agent.name} <#{agent.email}>"
     ticket.subject = message.subject
     Mailman.logger.info "      Set subject: #{ticket.subject}"
     ticket.body = body

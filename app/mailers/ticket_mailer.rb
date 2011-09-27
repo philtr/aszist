@@ -1,15 +1,15 @@
 class TicketMailer < ActionMailer::Base
-  add_template_helper(ApplicationHelper)
-  
+  add_template_helper ApplicationHelper
+
   def agent_reply(comment)
     @comment = comment
     @to = "#{@comment.ticket.user} <#{@comment.ticket.user.email}>"
     @from = "#{@comment.user} <#{@comment.user.email}>"
     mail(:to => @to, :from => @from, :subject => "Re: #{@comment.ticket.subject}")
   end
-  
+
   def notify_agent(ticket)
-    config = Hashie::Mash.new(YAML::load(ERB.new(File.read('config/mailman.yml')).result))  
+    config = Hashie::Mash.new(YAML::load(ERB.new(File.read('config/mailman.yml')).result))
     @ticket = ticket
     @to = "#{@ticket.agent} <#{@ticket.agent.email}>"
     @from = "#{@ticket.user} <#{@ticket.user.email}>"
@@ -17,7 +17,7 @@ class TicketMailer < ActionMailer::Base
     mail(:to => @to, :from => @from, :return_path => @reply_to,
       :subject => "[aszist] #{@ticket.subject}")
   end
-  
+
   class Preview < MailView
     def agent_reply
       bob = User.new(
@@ -41,7 +41,7 @@ class TicketMailer < ActionMailer::Base
       comment.user = steve
       ::TicketMailer.agent_reply(comment)
     end
-    
+
     def notify_agent
       bob = User.new(
         :email => "bob@example.com",

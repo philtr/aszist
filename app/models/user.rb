@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
   end
 
   def name
-    return [self.first_name, self.last_name].join(" ").lstrip
+    if self.first_name or self.last_name
+      return [self.first_name, self.last_name].join(" ").lstrip
+    else
+      return self.email
+    end
   end
 
   def to_s
