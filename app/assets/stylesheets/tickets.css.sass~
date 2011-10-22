@@ -12,5 +12,5 @@ body.tickets
     &.odd
       background: #fafafa 
   td.high
-    background-color: #E01B25
+    background-color: red
     color: white

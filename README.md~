@@ -12,7 +12,7 @@ Open-source helpdesk support system
 
 ## Requirements
 
-Rails 3.1.1
+Rails 3.1.0
 
 ### Application Gems
 * devise
