@@ -29,12 +29,9 @@ Rails 3.1.0
 * sass-rails
 * coffee-script
 * uglifier
-
-gem 'jquery-rails', '~> 1.0.12'
-gem 'therubyracer', '~> 0.9.2' # for execjs support
-
-gem 'mail_view', :git => 'https://github.com/37signals/mail_view'
-
+* jquery-rails
+* therubyracer
+* 'mail_view
 
 ## License
 
