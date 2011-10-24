@@ -66,7 +66,7 @@ Rails 3.1.0
 * uglifier
 * jquery-rails
 * therubyracer
-* 'mail_view
+* mail_view
 
 ## License
 
