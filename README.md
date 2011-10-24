@@ -16,6 +16,12 @@ git clone git://github.com/philtr/aszist.git
 bundle install
 ```
 
+### Load database schema
+
+```bash
+rake db:schema:load
+```
+
 ### Set up Incoming email
 
 Modify `config/mailman.yml` or set the following environment variables:
