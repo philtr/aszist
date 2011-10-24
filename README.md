@@ -1,4 +1,4 @@
-# Aszist
+# ![Aszist](https://github.com/philtr/aszist/raw/master/app/assets/images/logo.png)
 
 Open-source helpdesk support system
 
