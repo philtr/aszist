@@ -4,11 +4,40 @@ Open-source helpdesk support system
 
 ## Getting Started
 
-* git clone git://github.com/philtr/aszist.git
-* cd aszist
-* bundle install
-* rake db:migrate
-* rails s
+### Get the source code
+
+```bash
+git clone git://github.com/philtr/aszist.git
+```
+
+### Install gems
+
+```bash
+bundle install
+```
+
+### Set up Incoming email
+
+Modify `config/mailman.yml` or set the following environment variables:
+
+```bash
+MAILMAN_USERNAME # POP3 username
+MAILMAN_PASSWORD # POP3 password
+MAILMAN_SERVER   # POP3 mail server name
+MAILMAN_PORT     # probably '25'
+MAILMAN_SSL      # use SSL? true/false
+
+MAILMAN_POLL_INTERVAL # don't set this too low or your server might block you
+
+MAILMAN_DOMAIN # support@MAILMAN_DOMAIN
+```
+
+### Start the servers
+
+```bash
+rails server
+rackup mailman.ru
+```
 
 ## Requirements
 
