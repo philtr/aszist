@@ -45,6 +45,10 @@ rails server
 rackup mailman.ru
 ```
 
+### Need more help?
+
+Ask on the [mailing list](http://groups.google.com/group/aszist).
+
 ## Requirements
 
 Rails 3.1.0
