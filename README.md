@@ -72,6 +72,15 @@ Rails 3.1.0
 * therubyracer
 * mail_view
 
+## Contributing to Aszist
+
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the [issue tracker](http://github.com/philtr/aszist/issues) to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for the feature/bugfix. This is important so I don't break it in a future version unintentionally.
+
 ## License
 
 Copyright &copy; 2011 Phillip Ridlen
