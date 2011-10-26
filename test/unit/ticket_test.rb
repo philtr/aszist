@@ -29,44 +29,34 @@ class TicketTest < ActiveSupport::TestCase
   end
 
   test "should return an array of all tickets with status 'pending'" do
-    ticket_one = valid_ticket(:pending_low)
-    ticket_two = valid_ticket(:pending_high)
-    ticket_three = valid_ticket(:open_low)
+    valid_ticket(:pending_low)
+    valid_ticket(:pending_high)
     assert Ticket.pending_tickets.count == 2,
       "Returned incorrect number of tickets (#{Ticket.pending_tickets.count})."
   end
 
   test "should return an array of all tickets with status 'open'" do
-    ticket_one = valid_ticket(:open_low)
-    ticket_two = valid_ticket(:open_high)
-    ticket_three = valid_ticket(:closed_low)
     assert Ticket.open_tickets.count == 2,
       "Returned incorrect number of tickets (#{Ticket.open_tickets.count})."
   end
 
   test "should return an array of all tickets with status 'closed'" do
-    ticket_one = valid_ticket(:closed_low)
-    ticket_two = valid_ticket(:closed_high)
-    ticket_three = valid_ticket(:pending_low)
     assert Ticket.closed_tickets.count == 2,
       "Returned incorrect number of tickets (#{Ticket.closed_tickets.count})."
   end
 
   test "should return an array of all tickets with priority 'low'" do
-    ticket_one = valid_ticket(:pending_low)
-    ticket_two = valid_ticket(:pending_high)
-    ticket_three = valid_ticket(:open_low)
-    assert Ticket.low_priority.count == 2,
+    assert Ticket.low_priority.count == 3,
+      "Returned incorrect number of tickets (#{Ticket.low_priority.count})."
+  end
+
+  test "should return an array of all tickets with priority 'medium'" do
+    assert Ticket.low_priority.count == 3,
       "Returned incorrect number of tickets (#{Ticket.low_priority.count})."
   end
   
-  # TODO: Add test and fixtures for priority 'medium'
-
   test "should return an array of all tickets with priority 'high'" do
-    ticket_one = valid_ticket(:closed_low)
-    ticket_two = valid_ticket(:closed_high)
-    ticket_three = valid_ticket(:pending_low)
-    assert Ticket.high_priority.count == 1,
+    assert Ticket.high_priority.count == 3,
       "Returned incorrect number of tickets (#{Ticket.high_priority.count})."
   end
 
