@@ -75,6 +75,7 @@ GEM
       treetop (~> 1.4.8)
     maildir (2.0.0)
     mime-types (1.17.1)
+    minitest (2.7.0)
     multi_json (1.0.3)
     mysql2 (0.3.7)
     orm_adapter (0.0.5)
@@ -148,11 +149,11 @@ DEPENDENCIES
   cancan (~> 1.6.5)
   coffee-script (~> 2.2.0)
   devise (~> 1.4.2)
-  foreman
+  foreman (~> 0.25.0)
   hashie (~> 1.1.0)
   jquery-rails (~> 1.0.12)
-  mail_view!
   mailman!
+  minitest (~> 2.7.0)
   mysql2 (~> 0.3.7)
   paper_trail (~> 2.2.9)
   rails (~> 3.1.1)
