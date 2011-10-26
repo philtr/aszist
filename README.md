@@ -40,9 +40,12 @@ MAILMAN_DOMAIN # support@MAILMAN_DOMAIN
 
 ### Start the servers
 
+Aszist uses a
+[`Procfile`](https://github.com/philtr/aszist/blob/master/Procfile) to manage
+processes, so use [Foreman](http://ddollar.github.com/foreman/) crank it up:
+
 ```bash
-rails server
-rackup mailman.ru
+foreman start
 ```
 
 ### Need more help?
