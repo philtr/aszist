@@ -23,12 +23,13 @@ gem 'therubyracer', '~> 0.9.2' # for execjs support
 
 group :development do
   gem 'sqlite3', '~> 1.3.4'
-  gem 'foreman'
+  gem 'foreman', '~> 0.25.0'
 end
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'minitest', '~> 2.7.0'
 end
 
 group :production do
