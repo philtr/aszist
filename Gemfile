@@ -25,6 +25,7 @@ gem 'mail_view', :git => 'https://github.com/37signals/mail_view'
 
 group :development do
   gem 'sqlite3', '~> 1.3.4'
+  gem 'foreman'
 end
 
 group :test do
