@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0'
+gem 'rails', '~> 3.1.1'
 
 gem 'mailman', :git => 'git://github.com/titanous/mailman.git',
                :ref => '70382c3c32bde0c6e225bee39bea17af7cdfe39a'
