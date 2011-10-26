@@ -10,12 +10,6 @@ GIT
       mail (>= 2.0.3)
       maildir (>= 0.5.0)
 
-GIT
-  remote: https://github.com/37signals/mail_view
-  revision: 7c0cf5df704f999acab375836026297801c9c6bb
-  specs:
-    mail_view (1.0.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
