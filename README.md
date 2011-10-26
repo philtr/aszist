@@ -55,26 +55,7 @@ Ask on the [mailing list](http://groups.google.com/group/aszist).
 
 ## Requirements
 
-Rails 3.1.0
-
-### Application Gems
-* devise
-* cancan
-* hashie
-* mailman
-* mysql2
-* paper_trail
-* redcarpet
-* simple_form
-* sqlite3
-
-### Asset template engines
-* sass-rails
-* coffee-script
-* uglifier
-* jquery-rails
-* therubyracer
-* mail_view
+All dependencies are listed in [`Gemfile.lock`](https://github.com/philtr/aszist/blob/master/Gemfile.lock)
 
 ## Contributing to Aszist
 
