@@ -8,12 +8,13 @@ Open-source helpdesk support system
 
 ```bash
 git clone git://github.com/philtr/aszist.git
+cd aszist
 ```
 
 ### Install gems
 
 ```bash
-bundle install
+bundle install # 'use --without production' to install without production gems
 ```
 
 ### Load database schema
@@ -77,12 +78,15 @@ Rails 3.1.0
 
 ## Contributing to Aszist
 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the [issue tracker](http://github.com/philtr/aszist/issues) to make sure someone already hasn't requested it and/or contributed it
+* Check out the latest master to make sure the feature hasn't been implemented
+  or the bug hasn't been fixed yet
+* Check out the [issue tracker](http://github.com/philtr/aszist/issues) to make
+  sure someone already hasn't requested it and/or contributed it
 * Fork the project
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
-* Make sure to add tests for the feature/bugfix. This is important so I don't break it in a future version unintentionally.
+* Make sure to add tests for the feature/bugfix. This is important so I don't
+  break it in a future version unintentionally.
 
 ## License
 
