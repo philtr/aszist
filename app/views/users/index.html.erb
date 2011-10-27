@@ -35,7 +35,7 @@
             <td class="role"><%= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role) %></td>
             <td class="actions">
               <%= link_to "Edit", edit_user_path(user) %>
-              <%= link_to "Delete", :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %>
+              <%= link_to "Delete", user, :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete %>
             </td>
           <% end unless @users[role].empty? %>
         <% end %>
