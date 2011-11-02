@@ -42,7 +42,7 @@ private
   end
 
   def set_default_priority
-    self.priority = Priorities.first if self.priority.nil?
+    self.priority = Priorities.first if self.priority.to_s.empty?
   end
 
   def create_user

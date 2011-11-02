@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20110810231028) do
     t.boolean  "sent_to_user", :default => false
   end
 
-  add_index "comments", ["ticket_id"], :name => "index_ticket_comments_on_ticket_id"
-  add_index "comments", ["user_id"], :name => "index_ticket_comments_on_user_id"
+  add_index "comments", ["ticket_id"], :name => "index_comments_on_ticket_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "tickets", :force => true do |t|
     t.integer  "user_id"
