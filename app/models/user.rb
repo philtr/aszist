@@ -9,10 +9,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :agents, where("role = ? OR role = ?", "agent", "admin")
-  scope :admins, where(:role => "admin")
 
-  ROLES = %w[customer agent admin]
+  ROLES = %w( customer agent admin )
+
+  def self.agents
+    where("role = ? OR role = ?", "agent", "admin")
+  end
+
+  def self.admins
+    where(role: "admin")
+  end
 
   def self.default_agent
     # TODO: Make this configurable in the app
@@ -28,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-    if self.name.to_s.empty?
+    if self.name.blank?
       return self.email
     else
       return self.name

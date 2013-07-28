@@ -7,12 +7,12 @@ class Ticket < ActiveRecord::Base
 
   has_paper_trail
 
-  Statuses = ["pending","open","closed"]
-  Priorities = ["low","medium","high"]
+  STATUSES = %w( pending open closed )
+  PRIORITIES = %w( low medium high )
 
   validates :user, :presence => true
-  validates :status, :inclusion => { :in => Ticket::Statuses }
-  validates :priority, :inclusion => { :in => Ticket::Priorities }
+  validates :status, :inclusion => { :in => Ticket::STATUSES }
+  validates :priority, :inclusion => { :in => Ticket::PRIORITIES }
   validates :token, :presence => true, :uniqueness => true
 
   before_validation :set_pending,
@@ -20,44 +20,56 @@ class Ticket < ActiveRecord::Base
                     :create_user,
                     :generate_token
 
-  default_scope :order => "created_at DESC"
-
-  scope :pending_tickets, where(:status => "pending")
-  scope :open_tickets,    where(:status => "open")
-  scope :closed_tickets,  where(:status => "closed")
-
-  scope :low_priority,    where(:priority => "low")
-  scope :medium_priority, where(:priority => "medium")
-  scope :high_priority,   where(:priority => "high")
-
-
   def date
     self.created_at.strftime('%b %d')
   end
 
-private
+  def self.by_date
+    order("created_at DESC")
+  end
+
+  def self.pending_tickets
+    where(status: "pending")
+  end
+
+  def self.open_tickets
+    where(status: "open")
+  end
+
+  def self.closed_tickets
+    where(status: "closed")
+  end
+
+  def self.low_priority
+    where(priority: "low")
+  end
+
+  def self.medium_priority
+    where(priority: "medium")
+  end
+
+  def self.high_priority
+    where(priority: "high")
+  end
+
+  protected
 
   def set_pending
-    self.status = Statuses.first if self.status.to_s.empty?
+    self.status = STATUSES.first if self.status.blank?
   end
 
   def set_default_priority
-    self.priority = Priorities.first if self.priority.to_s.empty?
+    self.priority = PRIORITIES.first if self.priority.blank?
   end
 
   def create_user
-    if self.user.nil?
+    if self.user.blank?
       # TODO: Create new user for email and assign to ticket
     end
   end
 
   def generate_token
-    if self.token.nil?
-      begin
-        random_token = SecureRandom.hex(16)
-      end while Ticket.find_by_token(random_token) == []
-      self.token = random_token
-    end
+    self.token = SecureRandom.hex(64) if self.token.blank?
   end
 
 end
