@@ -7,8 +7,6 @@ class TicketsController < ApplicationController
   def index
     @tickets = Ticket.newest_first.visible(current_user).group_by_status
 
-    raise @tickets.to_yaml
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tickets }
