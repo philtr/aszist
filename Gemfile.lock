@@ -61,6 +61,9 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffi (1.9.0)
+    foreman (0.25.0)
+      term-ansicolor (~> 1.0.5)
+      thor (>= 0.13.6)
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.4)
@@ -136,6 +139,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    term-ansicolor (1.0.7)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -163,6 +167,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0)
   factory_girl_rails
+  foreman
   hashie (~> 2.0.5)
   jquery-rails (~> 3.0.4)
   mailman (~> 0.6.0)

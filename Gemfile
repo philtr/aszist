@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.0.0"
+
 gem 'rails', '~> 4.0.0'
 gem 'mailman', '~> 0.6.0'
 gem 'pg'
@@ -19,6 +21,10 @@ gem 'uglifier', '~> 2.1.2'
 
 gem 'jquery-rails', '~> 3.0.4'
 gem 'therubyracer', '~> 0.11.4' # for execjs support
+
+group :development do
+  gem "foreman"
+end
 
 group :test do
   gem 'factory_girl_rails'
