@@ -21,6 +21,9 @@ gem 'jquery-rails', '~> 3.0.4'
 gem 'therubyracer', '~> 0.11.4' # for execjs support
 
 group :test do
+  gem 'factory_girl_rails'
+  gem 'shoulda-context'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'turn', require: false
 end

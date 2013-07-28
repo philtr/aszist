@@ -10,7 +10,7 @@ class Ticket < ActiveRecord::Base
   STATUSES = %w( pending open closed )
   PRIORITIES = %w( low medium high )
 
-  validates :user, :presence => true
+  validates :user_id, :presence => true
   validates :status, :inclusion => { :in => Ticket::STATUSES }
   validates :priority, :inclusion => { :in => Ticket::PRIORITIES }
   validates :token, :presence => true, :uniqueness => true
@@ -24,7 +24,7 @@ class Ticket < ActiveRecord::Base
     self.created_at.strftime('%b %d')
   end
 
-  def self.by_date
+  def self.newest_first
     order("created_at DESC")
   end
 
@@ -50,6 +50,18 @@ class Ticket < ActiveRecord::Base
 
   def self.high_priority
     where(priority: "high")
+  end
+
+  def self.visible(user)
+    if user.role?(:admin)
+      all
+    else
+      where("user_id = ? OR agent_id = ?", user.id, user.id)
+    end
+  end
+
+  def self.group_by_status
+    group(:status)
   end
 
   protected

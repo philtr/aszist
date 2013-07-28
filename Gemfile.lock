@@ -55,6 +55,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     ffi (1.9.0)
     hashie (2.0.5)
     hike (1.2.3)
@@ -112,6 +117,9 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    shoulda-context (1.1.4)
+    shoulda-matchers (2.2.0)
+      activesupport (>= 3.0.0)
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
@@ -154,6 +162,7 @@ DEPENDENCIES
   cancan (~> 1.6.10)
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0)
+  factory_girl_rails
   hashie (~> 2.0.5)
   jquery-rails (~> 3.0.4)
   mailman (~> 0.6.0)
@@ -162,6 +171,8 @@ DEPENDENCIES
   rails (~> 4.0.0)
   redcarpet (~> 3.0.0)
   sass-rails (~> 4.0.0)
+  shoulda-context
+  shoulda-matchers
   simple_form (~> 3.0.0.rc)
   simplecov
   therubyracer (~> 0.11.4)

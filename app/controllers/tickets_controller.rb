@@ -5,11 +5,9 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    if current_user.role?(:admin)
-      @tickets = Ticket.all.group_by {|ticket| ticket.status }
-    else
-      @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id).group_by {|ticket| ticket.status }
-    end
+    @tickets = Ticket.newest_first.visible(current_user).group_by_status
+
+    raise @tickets.to_yaml
 
     respond_to do |format|
       format.html # index.html.erb

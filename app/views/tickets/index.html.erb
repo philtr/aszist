@@ -1,9 +1,9 @@
 <h2>Your tickets</h2>
-<% Ticket::Statuses.each do |status| %>
+<% Ticket::STATUSES.each do |status| %>
   <%- reset_cycle("row") -%>
   <div class="group <%= status %>">
   <h3><%= status.humanize %> tickets</h3>
-  <% if @tickets[status].to_s.empty? %>
+  <% if @tickets[status].blank? %>
     <p class="no-tickets">No <%= status %> tickets.</p>
   <% else %>
     <table>
@@ -16,7 +16,8 @@
         </tr>
       </thead>
 
-      <% tickets = @tickets[status].group_by {|t| t.priority }; Ticket::Priorities.reverse.each do |priority| %>
+      <% tickets = @tickets[status].group(:priority) %>
+      <% Ticket::PRIORITIES.reverse.each do |priority| %>
         <% unless tickets[priority].to_s.empty? %>
           <% tickets[priority].each do |ticket| %>
             <tr id="ticket-<%= ticket.id %>" class="<%= cycle('odd','even', :name => "row") %> <%= ticket.priority %> <%= ticket.status %>">
