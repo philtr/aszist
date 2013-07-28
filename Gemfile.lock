@@ -115,6 +115,10 @@ GEM
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -159,6 +163,7 @@ DEPENDENCIES
   redcarpet (~> 3.0.0)
   sass-rails (~> 4.0.0)
   simple_form (~> 3.0.0.rc)
+  simplecov
   therubyracer (~> 0.11.4)
   turn
   uglifier (~> 2.1.2)
