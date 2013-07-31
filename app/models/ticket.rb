@@ -60,8 +60,9 @@ class Ticket < ActiveRecord::Base
     end
   end
 
+  # Will not return an ActiveRecord::Relation!
   def self.group_by_status
-    group(:status)
+    all.group_by(&:status)
   end
 
   protected
