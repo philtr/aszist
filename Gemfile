@@ -15,6 +15,7 @@ gem 'redcarpet', '~> 3.0.0'
 gem 'simple_form', '~> 3.0.0.rc'
 
 # Asset template engines
+gem 'haml', '~> 4.0.3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '~> 2.1.2'
