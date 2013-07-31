@@ -24,6 +24,7 @@ gem 'therubyracer', '~> 0.11.4' # for execjs support
 
 group :development do
   gem "foreman"
+  gem "pry-rails"
 end
 
 group :test do
