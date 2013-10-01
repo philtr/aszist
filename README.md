@@ -1,4 +1,4 @@
-# [![Aszist](https://github.com/philtr/aszist/raw/master/app/assets/images/logo.png)](http://aszist.com)
+# [![Aszist](https://github.com/philtr/aszist/raw/master/app/assets/images/logo.png)](http://phillipridlen.com/aszist/)
 
 Open-source helpdesk support system
 
