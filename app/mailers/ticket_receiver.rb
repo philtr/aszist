@@ -1,7 +1,7 @@
 class TicketReceiver
   def add_comment(message, params)
     ticket = Ticket.find_by_token(params[:token])
-    user = User.find_by_email(message.from)
+    user = User.find_by_email(message.from.first)
 
     return if ticket.nil? || user.nil?
 
@@ -27,8 +27,8 @@ class TicketReceiver
   end
 
   def create_ticket(message, params)
-    Mailman.logger.info " ---> Looking for user with email #{message.from}"
-    user = User.find_by_email(message.from)
+    Mailman.logger.info " ---> Looking for user with email #{message.from.first}"
+    user = User.where(email: message.from.first).first_or_create
     Mailman.logger.info "      Found user: #{user.name} <#{user.email}>"
 
     if message.multipart?

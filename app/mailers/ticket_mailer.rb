@@ -9,11 +9,10 @@ class TicketMailer < ActionMailer::Base
   end
 
   def notify_agent(ticket)
-    config = Hashie::Mash.new(YAML::load(ERB.new(File.read('config/mailman.yml')).result))
     @ticket = ticket
     @to = "#{@ticket.agent} <#{@ticket.agent.email}>"
     @from = "#{@ticket.user} <#{@ticket.user.email}>"
-    @reply_to = "#{config.email.support.user}+#{@ticket.token}@#{config.email.support.domain}"
+    @reply_to = "support+#{@ticket.token}@#{ENV["MAIL_DOMAIN"]}"
     mail(:to => @to, :from => @from, :return_path => @reply_to,
       :subject => "[aszist] #{@ticket.subject}")
   end

@@ -7,7 +7,6 @@ gem 'pg'
 
 gem 'devise', '~> 3.2.0'
 gem 'cancan', '~> 1.6.10'
-gem 'hashie', '~> 2.0.5'
 gem 'paper_trail', '~> 3.0.0.rc1'
 gem 'redcarpet', '~> 3.0.0'
 gem 'simple_form', '~> 3.0.0'

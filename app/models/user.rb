@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :tickets
   has_many :comments
 
-  before_create :set_default_role
+  after_initialize :set_default_role, :set_temporary_password
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   ROLES = %w( customer agent admin )
 
   def self.agents
-    where("role = ? OR role = ?", "agent", "admin")
+    where("role IN (?)", ["agent", "admin"])
   end
 
   def self.admins
@@ -45,10 +45,15 @@ class User < ActiveRecord::Base
     ROLES.index(base_role.to_s) <= ROLES.index(role)
   end
 
-private
+  protected
 
   def set_default_role
     self.role = ROLES[0]
+  end
+
+  def set_temporary_password
+    # TODO: Send user their temporary password if this is still set after creation
+    self.password = SecureRandom.base64(18) if encrypted_password.blank?
   end
 
 end
