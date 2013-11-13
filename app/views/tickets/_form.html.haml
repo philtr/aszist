@@ -3,9 +3,9 @@
 
   .inputs
     - if can? :manage, @ticket
-      = f.input :agent_id, :collection => User.agents.collect{|a| [a.to_s, a.id]}, :prompt => false
+      = f.input :agent_id, :collection => User.agents.collect{|a| [a.name, a.id]}, :prompt => false
       = f.input :status, :collection => Ticket::STATUSES.collect{|s| [s.humanize, s] }, :prompt => false
-    = f.input :priority, :collection => Ticket::PRIORITIES.collect{|p| [p.humanize, p] }, :prompt => false
+      = f.input :priority, :collection => Ticket::PRIORITIES.collect{|p| [p.humanize, p] }, :prompt => false
     = f.input :subject
     = f.input :body
 
