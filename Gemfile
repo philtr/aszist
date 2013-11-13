@@ -1,27 +1,22 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+gem 'rails', '~> 4.0.1'
+gem 'mailman', '~> 0.7.0'
 
-gem 'rails', '~> 4.0.0'
-gem 'mailman', '~> 0.6.0'
 gem 'pg'
 
-# Application gems
-gem 'devise', '~> 3.0.0'
+gem 'devise', '~> 3.2.0'
 gem 'cancan', '~> 1.6.10'
 gem 'hashie', '~> 2.0.5'
-gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
+gem 'paper_trail', '~> 3.0.0.rc1'
 gem 'redcarpet', '~> 3.0.0'
-gem 'simple_form', '~> 3.0.0.rc'
+gem 'simple_form', '~> 3.0.0'
 
-# Asset template engines
-gem 'haml', '~> 4.0.3'
-gem 'sass-rails', '~> 4.0.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '~> 2.1.2'
+gem 'sass-rails', '~> 4.0.1'
+gem 'coffee-rails', '~> 4.0.1'
+gem 'uglifier', '~> 2.3.1'
 
 gem 'jquery-rails', '~> 3.0.4'
-gem 'therubyracer', '~> 0.11.4' # for execjs support
 
 group :development do
   gem "foreman"
@@ -35,3 +30,4 @@ group :test do
   gem 'simplecov', require: false
   gem 'turn', require: false
 end
+

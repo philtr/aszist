@@ -10,6 +10,8 @@ require 'factory_girl'
 require 'shoulda/context'
 require 'shoulda/matchers'
 
+require 'turn'
+
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 
