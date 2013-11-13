@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title Aszist
+    = stylesheet_link_tag "application"
+    = csrf_meta_tags
+
+  %body{:class => controller.controller_name}
+    #container
+      %header
+        %h1#logo= link_to image_tag('logo.png'), :root
+        #user_actions
+          = render 'devise/menu/login_items'
+          %br/
+          = link_to "Manage users", users_path if can? :manage, User unless current_user.nil?
+        - unless notice.to_s.empty?
+          %p#notice= notice
+      %section#content
+        = yield
+      %footer
+        %p
+          Powered by #{link_to image_tag('logo_small.png'), 'https://github.com/philtr/aszist'}.
+
+    = javascript_include_tag "application"
+

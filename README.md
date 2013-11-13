@@ -14,29 +14,20 @@ cd aszist
 ### Install gems
 
 ```bash
-bundle install # 'use --without production' to install without production gems
+bundle install
 ```
 
-### Load database schema
+### Set up
 
 ```bash
-rake db:schema:load
+rake setup
 ```
 
-### Set up Incoming email
-
-Modify `config/mailman.yml` or set the following environment variables:
+### Set environment configuration Mailman
 
 ```bash
-MAILMAN_USERNAME # POP3 username
-MAILMAN_PASSWORD # POP3 password
-MAILMAN_SERVER   # POP3 mail server name
-MAILMAN_PORT     # probably '25'
-MAILMAN_SSL      # use SSL? true/false
-
-MAILMAN_POLL_INTERVAL # don't set this too low or your server might block you
-
-MAILMAN_DOMAIN # support@MAILMAN_DOMAIN
+cp env.sample .env
+export "$(cat .env)" # unless using Foreman
 ```
 
 ### Start the servers
@@ -55,7 +46,11 @@ Ask on the [mailing list](http://groups.google.com/group/aszist).
 
 ## Requirements
 
-All dependencies are listed in [`Gemfile.lock`](https://github.com/philtr/aszist/blob/master/Gemfile.lock)
+* Ruby (2.0.0)
+* Bundler (1.3.5)
+* PostgreSQL
+
+All gem dependencies are listed in [`Gemfile.lock`](https://github.com/philtr/aszist/blob/master/Gemfile.lock)
 
 ## Contributing to Aszist
 

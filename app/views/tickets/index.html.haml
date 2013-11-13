@@ -1,0 +1,29 @@
+%h2 Your tickets
+- Ticket::STATUSES.each do |status|
+  - reset_cycle("row")
+  %div{:class => "group #{status}"}
+    %h3
+      = status.humanize
+      tickets
+    - if @tickets[status].blank?
+      %p.no-tickets
+        No #{status} tickets.
+    - else
+      %table
+        %thead
+          %tr
+            %th ID
+            %th Date
+            %th Subject
+            %th Priority
+        - tickets = @tickets[status].group_by(&:priority)
+        - Ticket::PRIORITIES.reverse.each do |priority|
+          - unless tickets[priority].to_s.empty?
+            - tickets[priority].each do |ticket|
+              %tr{:class => "#{cycle('odd','even', :name => "row")} #{ticket.priority} #{ticket.status}", :id => "ticket-#{ticket.id}"}
+                %td.id= link_to ticket.id, ticket
+                %td.date= ticket.date
+                %td.subject= link_to ticket.subject, url_for(ticket)
+                %td{:class => "priority #{ticket.priority}"}= ticket.priority.humanize
+
+%p= link_to 'Submit New Ticket', new_ticket_path

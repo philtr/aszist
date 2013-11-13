@@ -5,11 +5,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    if current_user.role?(:admin)
-      @tickets = Ticket.all.group_by {|ticket| ticket.status }
-    else
-      @tickets = Ticket.where("user_id = ? OR agent_id = ?", current_user.id, current_user.id).group_by {|ticket| ticket.status }
-    end
+    @tickets = Ticket.newest_first.visible(current_user).group_by_status
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +44,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(params[:ticket])
+    @ticket = Ticket.new(ticket_params)
 
     @ticket.user = current_user if @ticket.user.nil?
     @ticket.agent = User.default_agent if @ticket.agent.nil?
@@ -70,7 +66,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
 
     respond_to do |format|
-      if @ticket.update_attributes(params[:ticket])
+      if @ticket.update_attributes(ticket_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { head :ok }
       else
@@ -90,5 +86,11 @@ class TicketsController < ApplicationController
       format.html { redirect_to tickets_url }
       format.json { head :ok }
     end
+  end
+
+  protected
+
+  def ticket_params
+    params.require(:ticket).permit(:user_id, :agent_id, :priority, :status, :subject, :body)
   end
 end

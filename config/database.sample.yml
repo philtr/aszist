@@ -1,0 +1,13 @@
+development:
+  encoding: unicode
+  adapter: postgresql
+  host: localhost
+  database: aszist_development
+
+test:
+  encoding: unicode
+  adapter: postgresql
+  host: localhost
+  database: aszist_test
+  min_messages: warning
+

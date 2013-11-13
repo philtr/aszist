@@ -1,0 +1,42 @@
+= link_to raw('&rarr; Back to Tickets'), tickets_path
+
+%p
+  %b From:
+  = @ticket.user
+  %br/
+  %b Assigned to:
+  = @ticket.agent
+  (#{link_to "Change", edit_ticket_path(@ticket)})
+  %br/
+  %b Status:
+  = @ticket.status.humanize
+  (#{link_to "Change", edit_ticket_path(@ticket)})
+  %br/
+  %b Priority:
+  = @ticket.priority.humanize
+  (#{link_to "Change", edit_ticket_path(@ticket)})
+  %br/
+  %b Subject:
+  = @ticket.subject
+
+= markdownify @ticket.body
+
+%hr/
+
+%h2 Comments
+- @ticket.comments.each do |comment|
+  %div{:class => "comment group #{cycle('odd', 'even')}"}
+    %strong= comment.user
+    = raw("<em>(Sent to user)</em>") if comment.sent_to_user?
+    %br/
+    = comment.created_at.strftime("%I:%M%p %b %d")
+    %p= markdownify comment.body
+
+%h3 Add a new comment
+= simple_form_for [@ticket, @comment] do |f|
+  %p= f.input :body
+  %p
+    %em Processed with Markdown
+  - if current_user.role?(:agent)
+    %p= f.input :sent_to_user, :label => "Send to user"
+  %p= f.submit "Add Comment"
