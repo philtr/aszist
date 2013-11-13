@@ -12,6 +12,6 @@ Aszist::Application.routes.draw do
     end
   end
 
-  root :to => 'pages#index'
+  root :to => 'tickets#index'
 
 end
