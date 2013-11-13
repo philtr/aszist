@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(params[:ticket])
+    @ticket = Ticket.new(ticket_params)
 
     @ticket.user = current_user if @ticket.user.nil?
     @ticket.agent = User.default_agent if @ticket.agent.nil?
@@ -66,7 +66,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
 
     respond_to do |format|
-      if @ticket.update_attributes(params[:ticket])
+      if @ticket.update_attributes(ticket_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { head :ok }
       else
@@ -86,5 +86,11 @@ class TicketsController < ApplicationController
       format.html { redirect_to tickets_url }
       format.json { head :ok }
     end
+  end
+
+  protected
+
+  def ticket_params
+    params.require(:ticket).permit(:user_id, :agent_id, :priority, :status, :subject, :body)
   end
 end
