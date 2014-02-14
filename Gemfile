@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.1'
+gem 'rails', '~> 4.0.2'
 gem 'mailman', '~> 0.7.0'
 
 gem 'pg'
 
-gem 'devise', '~> 3.2.0'
+gem 'devise', '~> 3.2.2'
 gem 'cancan', '~> 1.6.10'
-gem 'paper_trail', '~> 3.0.0.rc1'
+gem 'paper_trail', '~> 3.0.0'
 gem 'redcarpet', '~> 3.0.0'
-gem 'simple_form', '~> 3.0.0'
+gem 'simple_form', '~> 3.0.1'
 
-gem 'haml', '~> 4.0.4'
+gem 'haml', '~> 4.0.5'
 gem 'sass-rails', '~> 4.0.1'
-gem 'uglifier', '~> 2.3.1'
+gem 'uglifier', '~> 2.4.0'
 
 group :development do
   gem "foreman"
