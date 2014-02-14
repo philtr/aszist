@@ -3,6 +3,12 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.0
+env:
+  global:
+    - secure: "blU21Gua5PEzR50HAlAdSCFuRJ4jjDqR6T1N2uQfTIGQTW9Nf0m4IC6vTFpQLhvBaCfdS5MS9GmFiXQZBOh/zurwFQmW613Z7X+8btXg7PnxjKSCdtTXjGwbKTCGnzOCsUzmxC2BDDAN31qEcEJ3o4ulYryT4LOJZA6kfblguHA="
+    - secure: "zfKS/eXuxCk3BXT1gzABw16wTbVy3Gsh3btiUXXRmHdcKao341R0iAUZA29hOsvvzG/MkmHPVrCidT1+lOjng5+xNiFTsciCwaVMJNioZryXdOIYYci1R7GNt5tR83M8NEkpVOkx/pZlxWItlcVWaumSTLPldhEIa/a2z8Pl3Oo="
+    - secure: "BUZej3SGfCT54sh8ckYDsPrR5BpbC5dt0elBYcIfsmJ49bfoIErYNPuykdMWOogRrcHsRCM/QgJDI/SkTJBuxXZZArDEnLHAex7km1gbXMnQ5UFjUv4ZVImFqZnmJGbTK55xRgCK/7A1Wd2Nxj5EfcDI18//AAT26/V2rC3UUU0="
+    - secure: "Wu1t8bnmh5/+GJWDcH9ZPZVXnm6ygVNP/gHzSVXGAPWQ2l/rElhEmToR23/nbc/Hq7Z+/wrlLnuzPGX2WHWn9waWHYICRvH2mYh36+ePra3XRBgx3US3IgaUYIKTj0u2wbAqj9jewdcf0i6J0ZeTX0ck5ri07hwxYLbmoXDxbZk="
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c "create database aszist_test;" -U postgres
