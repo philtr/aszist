@@ -1,4 +1,6 @@
-= link_to raw('&rarr; Back to Tickets'), tickets_path
+%ul.breadcrumbs
+  %li= link_to "Tickets", tickets_path
+  %li= @ticket.id
 
 %p
   %b From:
@@ -25,7 +27,7 @@
 
 %h2 Comments
 - @ticket.comments.each do |comment|
-  %div{:class => "comment group #{cycle('odd', 'even')}"}
+  %div.panel
     %strong= comment.user
     = raw("<em>(Sent to user)</em>") if comment.sent_to_user?
     %br/

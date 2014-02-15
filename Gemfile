@@ -11,6 +11,8 @@ gem 'paper_trail', '~> 3.0.0'
 gem 'redcarpet', '~> 3.0.0'
 gem 'simple_form', '~> 3.0.1'
 
+gem 'foundation-rails'
+gem 'jquery-rails'
 gem 'haml', '~> 4.0.5'
 gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '~> 2.4.0'

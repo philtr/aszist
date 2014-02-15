@@ -6,7 +6,7 @@ Aszist::Application.routes.draw do
     resources :comments
   end
 
-  resources :users do
+  resources :users, except: [ :show ] do
     collection do
       post 'manage'
     end
