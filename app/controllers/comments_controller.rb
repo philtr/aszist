@@ -1,13 +1,15 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :load_ticket
 
   def index
-    @comments = Comment.where(:ticket_id => params[:ticket_id])
+    @comments = @ticket.comments
   end
+
   def create
-    @comment = Comment.create(params[:comment])
+    @comment = @ticket.comments.build(comment_params)
     @comment.user = current_user
-    @comment.ticket = Ticket.find(params[:ticket_id])
+
     if @comment.save
       if @comment.sent_to_user?
         TicketMailer.agent_reply(@comment).deliver
@@ -15,8 +17,20 @@ class CommentsController < ApplicationController
       redirect_to(@comment.ticket)
     end
   end
+
   def update
   end
+
   def destroy
+  end
+
+  protected
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
+  def load_ticket
+    @ticket = Ticket.find(params[:ticket_id])
   end
 end
