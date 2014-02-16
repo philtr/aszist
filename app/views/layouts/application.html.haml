@@ -10,9 +10,11 @@
     = csrf_meta_tags
 
   %body
-    = render "shared/header"
-    = yield
-    = render "shared/footer"
+    .row
+      .large-12.columns
+        = render "shared/header"
+        = yield
+        = render "shared/footer"
 
     = javascript_include_tag "application"
 

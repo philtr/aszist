@@ -38,7 +38,7 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Source Sans Pro","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -1194,3 +1194,6 @@ $topbar-menu-icon-color: $primary-color;
 // $include-html-visibility-classes: $include-html-classes;
 
 @import 'foundation';
+
+// custom foundation stuff
+@import 'foundation/th';

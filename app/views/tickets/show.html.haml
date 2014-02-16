@@ -2,24 +2,29 @@
   %li= link_to "Tickets", tickets_path
   %li= @ticket.id
 
-%p
-  %b From:
-  = @ticket.user
-  %br/
-  %b Assigned to:
-  = @ticket.agent
-  (#{link_to "Change", edit_ticket_path(@ticket)})
-  %br/
-  %b Status:
-  = @ticket.status.humanize
-  (#{link_to "Change", edit_ticket_path(@ticket)})
-  %br/
-  %b Priority:
-  = @ticket.priority.humanize
-  (#{link_to "Change", edit_ticket_path(@ticket)})
-  %br/
-  %b Subject:
-  = @ticket.subject
+%table
+  %tr
+    %th{ scope: "row"} From:
+    %td= @ticket.user
+  %tr
+    %th{ scope: "row" } Assigned to:
+    %td
+      = @ticket.agent
+      (#{link_to "Change", edit_ticket_path(@ticket)})
+  %tr
+    %th{ scope: "row" } Status:
+    %td
+      = @ticket.status.humanize
+      (#{link_to "Change", edit_ticket_path(@ticket)})
+  %tr
+    %th{ scope: "row" } Priority:
+    %td
+      = @ticket.priority.humanize
+      (#{link_to "Change", edit_ticket_path(@ticket)})
+  %tr
+    %th{ scope: "row" } Subject:
+    %td
+      = @ticket.subject
 
 = markdownify @ticket.body
 
