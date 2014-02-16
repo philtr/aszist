@@ -2,7 +2,6 @@
   %p
     %strong= comment.user
     = raw("<em>(Sent to user)</em>") if comment.sent_to_user?
-    %br/
     = time_ago_in_words(comment.created_at).humanize
     ago
   %p
