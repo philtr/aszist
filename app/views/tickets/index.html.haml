@@ -1,3 +1,5 @@
+%p.right= link_to 'Submit New Ticket', new_ticket_path, class: "small round button"
+
 %h2 Your tickets
 - Ticket::STATUSES.each do |status|
   - reset_cycle("row")
@@ -26,4 +28,3 @@
                 %td.subject= link_to ticket.subject, url_for(ticket)
                 %td{:class => "priority #{ticket.priority}"}= ticket.priority.humanize
 
-%p= link_to 'Submit New Ticket', new_ticket_path, class: "small round button"

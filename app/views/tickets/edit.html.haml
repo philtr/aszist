@@ -1,8 +1,9 @@
+%ul.breadcrumbs
+  %li= link_to "Tickets", tickets_path
+  %li= link_to @ticket.id, @ticket
+  %li Edit
+
 %h1 Editing ticket
 
 = render 'form'
 
-%p
-  = link_to 'Show', @ticket
-  |
-  = link_to 'Back', tickets_path

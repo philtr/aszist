@@ -7,6 +7,7 @@
 
   %section.top-bar-section
     %ul.left
+      %li= link_to "Tickets", tickets_path
       %li= link_to "Manage users", users_path if can?(:manage, User)
     %ul.right
       = render 'devise/menu/login_items'

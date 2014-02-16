@@ -7,7 +7,7 @@
       = f.input :status, :collection => Ticket::STATUSES.collect{|s| [s.humanize, s] }, :prompt => false
       = f.input :priority, :collection => Ticket::PRIORITIES.collect{|p| [p.humanize, p] }, :prompt => false
     = f.input :subject
-    = f.input :body
+    = f.input :body, input_html: { rows: 8 }
 
     .actions
-      = f.submit
+      = f.submit class: "button"

@@ -1,0 +1,35 @@
+%h1 Users
+= form_tag '/users/manage' do
+  - User::ROLES.reverse.each do |role|
+    - reset_cycle("row")
+    %div{class: "group #{cycle("odd","even", :name => "group")}"}
+      %h3= role.pluralize.humanize
+      - if @users[role].to_s.empty?
+        %p There are no users with this role.
+      - else
+        - @users[role].each do |user|
+          %table
+            %thead
+              %tr
+                %th.id ID
+                %th.email Email
+                %th.name Name
+                %th.role Role
+                %th.actions Actions
+            %tbody
+              %tr{class: cycle("odd","even", :name => "row")}
+                = hidden_field_tag "users[][id]", user.id
+                %td.id= user.id
+                %td.email= user.email
+                %td.name= user.name
+                - if user == current_user
+                  %td.role= user.role.humanize
+                  %td.actions
+                - else
+                  %td.role= select_tag "users[][role]", options_for_select(User::ROLES.reverse.collect {|r| [r.humanize, r] }, user.role)
+                  %td.actions
+                    = link_to "Edit", edit_user_path(user)
+                    = link_to "Delete", user, :confirm => "Are you sure you want to delete #{user.name}?", :method => :delete
+                - end unless @users[role].empty?
+
+  %p= submit_tag "Update Users", class: "button"

@@ -11,9 +11,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
-    <% if can? :manage, User %>
-    <% end %>
+    <ul class="inline-list">
+      <li><%= f.submit "Update", class: "button" %></li>
+      <li><%= link_to "Delete", @user, :method => :delete, :confirm => "Are you sure?", class: "button secondary" %></li>
   </div>
-  <%= link_to "Delete", @user, :method => :delete, :confirm => "Are you sure?" %>
+
 <% end -%>

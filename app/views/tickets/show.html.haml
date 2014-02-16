@@ -39,9 +39,10 @@
 
 %h3 Add a new comment
 = simple_form_for [@ticket, @comment] do |f|
-  %p= f.input :body
+  %p= f.input :body, input_html: { rows: 5 }
   %p
     %em Processed with Markdown
   - if current_user.role?(:agent)
-    %p= f.input :sent_to_user, :label => "Send to user"
-  %p= f.submit "Add Comment"
+    %p= f.input :sent_to_user, label: "Send email notification"
+
+  %p= f.submit "Add Comment", class: "button"
