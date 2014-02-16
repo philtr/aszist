@@ -29,7 +29,6 @@ rake setup
 
 ```bash
 cp env.sample .env
-export "$(cat .env)" # unless using Foreman
 ```
 
 ### Start the servers
@@ -42,14 +41,28 @@ processes, so use [Foreman](http://ddollar.github.com/foreman/) crank it up:
 foreman start
 ```
 
+If you want to crank up the servers individually or with Pow:
+
+```bash
+# Pow will only start the rails server
+cd ~/.pow
+ln -s path/to/aszist
+
+# Rails server
+rails server
+
+# Mailman server
+rackup mailman.ru
+```
+
 ### Need more help?
 
 Ask on the [mailing list](http://groups.google.com/group/aszist).
 
 ## Requirements
 
-* Ruby (2.0.0)
-* Bundler (1.3.5)
+* Ruby (tsted on 2.1.0, 2.0.0, or 1.9.3)
+* Bundler (1.5.3)
 * PostgreSQL
 
 All gem dependencies are listed in [`Gemfile.lock`](https://github.com/philtr/aszist/blob/master/Gemfile.lock)
