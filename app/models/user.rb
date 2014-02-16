@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :tickets
+  has_many :assigned_tickets, class_name: "Ticket", foreign_key: :agent_id
   has_many :comments
 
   after_initialize :set_default_role, :set_temporary_password
@@ -12,25 +13,16 @@ class User < ActiveRecord::Base
 
   ROLES = %w( customer agent admin )
 
-  def self.agents
-    where("role IN (?)", ["agent", "admin"])
-  end
-
-  def self.admins
-    where(role: "admin")
-  end
-
-  def self.default_agent
-    # TODO: Make this configurable in the app
-    User.agents.first
-  end
-
   def name
     if self.first_name or self.last_name
       return [self.first_name, self.last_name].join(" ").lstrip
     else
       return self.email
     end
+  end
+
+  def tickets_count
+    tickets.actionable.count + assigned_tickets.actionable.count
   end
 
   def to_s
@@ -43,6 +35,19 @@ class User < ActiveRecord::Base
 
   def role?(base_role)
     ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
+  def self.agents
+    where("role IN (?)", ["agent", "admin"])
+  end
+
+  def self.admins
+    where(role: "admin")
+  end
+
+  def self.default_agent
+    # TODO: Make this configurable in the app
+    User.agents.first
   end
 
   protected

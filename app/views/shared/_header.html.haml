@@ -6,9 +6,15 @@
       = link_to "Menu", "#"
 
   %section.top-bar-section
-    %ul.left
-      %li= link_to "Tickets", tickets_path
-      %li= link_to "Manage users", users_path if can?(:manage, User)
+    - if user_signed_in?
+      %ul.left
+        %li
+          = link_to tickets_path do
+            Tickets
+            - if current_user.tickets_count > 0
+              %span.label.round= current_user.tickets_count
+        %li= link_to "Manage users", users_path if can?(:manage, User)
+
     %ul.right
       = render 'devise/menu/login_items'
 

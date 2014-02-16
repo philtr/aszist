@@ -25,6 +25,10 @@ class Ticket < ActiveRecord::Base
     (comments + versions).sort_by(&:created_at)
   end
 
+  def self.actionable
+    where("status = 'pending' OR status = 'open'")
+  end
+
   def self.newest_first
     order("created_at DESC")
   end
