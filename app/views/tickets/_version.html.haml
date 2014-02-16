@@ -1,15 +1,15 @@
 - @user = User.where(id: version.whodunnit).first
 
 - version.changeset.slice(:priority, :status, :subject, :body).each do |attribute, values|
-  .alert-box.round.info
-    = @user
+  .alert-box.round.secondary
+    %strong= @user
     changed the
-    = attribute
+    %strong= attribute
     from
-    = values.first
+    %strong= values.first
     to
-    = values.last
-    %em.label.secondary.radius
+    %strong= values.last
+    %em.label.success.round
       = time_ago_in_words(version.created_at).humanize
       ago
 
