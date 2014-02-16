@@ -1,0 +1,12 @@
+- @user = User.where(id: version.whodunnit).first
+
+- version.changeset.slice(:priority, :status, :subject, :body).each do |attribute, values|
+  .alert-box.round.info
+    = @user
+    changed the
+    = attribute
+    from
+    = values.first
+    to
+    = values.last
+

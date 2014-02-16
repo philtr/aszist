@@ -20,6 +20,11 @@ class Ticket < ActiveRecord::Base
                     :create_user,
                     :generate_token
 
+
+  def activity
+    (comments + versions).sort_by(&:created_at)
+  end
+
   def date
     self.created_at.strftime('%b %d')
   end
