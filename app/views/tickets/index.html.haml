@@ -1,14 +1,13 @@
-%p.right= link_to 'Submit New Ticket', new_ticket_path, class: "small round secondary button"
+%p.right= link_to 'Submit New Ticket', new_ticket_path, class: "small round success button"
 
 %h2 Your tickets
 - Ticket::STATUSES.each do |status|
-  - reset_cycle("row")
   %div{:class => "group #{status}"}
-    %h3
+    %h4
       = status.humanize
       tickets
     - if @tickets[status].blank?
-      %p.no-tickets
+      %p.alert-box.secondary
         No #{status} tickets.
     - else
       %table.small-12
@@ -22,7 +21,7 @@
         - Ticket::PRIORITIES.reverse.each do |priority|
           - unless tickets[priority].to_s.empty?
             - tickets[priority].each do |ticket|
-              %tr{:class => "#{cycle('odd','even', :name => "row")} #{ticket.priority} #{ticket.status}", :id => "ticket-#{ticket.id}"}
+              %tr{:class => "#{ticket.priority} #{ticket.status}", :id => "ticket-#{ticket.id}"}
                 %td.id= link_to ticket.id, ticket
                 %td.date
                   = time_ago_in_words(ticket.created_at).humanize
