@@ -12,6 +12,9 @@ Aszist::Application.routes.draw do
     end
   end
 
+  get "/profile", to: "profiles#edit", as: :edit_profile
+  patch "/profile", to: "profiles#update"
+
   root :to => 'tickets#index'
 
 end

@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_user_manager
+
   def index
-    if can? :manage, User
-      @users = User.all.group_by{|u| u.role }
-    else
-      redirect_to :root
-    end
+    @users = User.all.group_by{|u| u.role }
   end
+
   def manage
     params[:users].each do |user|
       unless user[:role].to_s.empty?
@@ -20,14 +19,16 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+
   def edit
     @user = User.find(params[:id])
   end
+
   def update
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         format.html { redirect_to users_path, notice: 'User was successfully updated.' }
         format.json { head :ok }
       else
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -47,6 +49,10 @@ class UsersController < ApplicationController
   end
 
   protected
+
+  def require_user_manager
+    redirect_to :root and return unless can?(:manage, User)
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :remember_me)
