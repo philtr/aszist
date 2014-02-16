@@ -6,6 +6,7 @@ gem 'mailman', '~> 0.7.0'
 gem 'pg'
 
 gem 'devise', '~> 3.2.2'
+gem 'dotenv-rails', '~> 0.9.0'
 gem 'cancan', '~> 1.6.10'
 gem 'paper_trail', '~> 3.0.0'
 gem 'redcarpet', '~> 3.0.0'
