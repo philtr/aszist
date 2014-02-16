@@ -1,7 +1,10 @@
 %div.panel
-  %strong= comment.user
-  = raw("<em>(Sent to user)</em>") if comment.sent_to_user?
-  %br/
-  = comment.created_at.strftime("%I:%M%p %b %d")
-  %p= markdownify comment.body
+  %p
+    %strong= comment.user
+    = raw("<em>(Sent to user)</em>") if comment.sent_to_user?
+    %br/
+    = time_ago_in_words(comment.created_at).humanize
+    ago
+  %p
+    = markdownify comment.body
 

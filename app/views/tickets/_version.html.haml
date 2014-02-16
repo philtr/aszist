@@ -9,4 +9,7 @@
     = values.first
     to
     = values.last
+    %em.label.secondary.radius
+      = time_ago_in_words(version.created_at).humanize
+      ago
 
