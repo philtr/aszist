@@ -4,11 +4,7 @@ class Comment < ActiveRecord::Base
 
   before_create :strip_out_reply_and_signature
 
-  def sent_to_user?
-    self.sent_to_user
-  end
-
-private
+  private
 
   def strip_out_reply_and_signature
     [

@@ -25,10 +25,6 @@ class Ticket < ActiveRecord::Base
     (comments + versions).sort_by(&:created_at)
   end
 
-  def date
-    self.created_at.strftime('%b %d')
-  end
-
   def self.newest_first
     order("created_at DESC")
   end
