@@ -1,4 +1,4 @@
-# [![Aszist](https://github.com/philtr/aszist/raw/master/app/assets/images/logo.png)](http://philtr.github.io/aszist/)
+# [![Aszist](http://aszist.s3.amazonaws.com/logo/aszist_med.png)](http://philtr.github.io/aszist/)
 
 [![Build Status](https://travis-ci.org/philtr/aszist.png?branch=master)](https://travis-ci.org/philtr/aszist)
 
