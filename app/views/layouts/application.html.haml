@@ -1,25 +1,20 @@
 !!!
 %html
   %head
+    %meta{ name: :viewport, content: "width=device-width, initial-scale=1.0" }
+
     %title Aszist
     = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+
     = csrf_meta_tags
 
-  %body{:class => controller.controller_name}
-    #container
-      %header
-        %h1#logo= link_to image_tag('logo.png'), :root
-        #user_actions
-          = render 'devise/menu/login_items'
-          %br/
-          = link_to "Manage users", users_path if can? :manage, User unless current_user.nil?
-        - unless notice.to_s.empty?
-          %p#notice= notice
-      %section#content
+  %body
+    .row
+      .large-12.columns
+        = render "shared/header"
         = yield
-      %footer
-        %p
-          Powered by #{link_to image_tag('logo_small.png'), 'https://github.com/philtr/aszist'}.
+        = render "shared/footer"
 
     = javascript_include_tag "application"
 

@@ -1,0 +1,16 @@
+%nav.top-bar{ "data-topbar" => true }
+  %ul.title-area
+    %li.name
+      %h1= logo
+    %li.toggle-topbar.menu-icon
+      = link_to "Menu", "#"
+
+  %section.top-bar-section
+    %ul.left
+      %li= link_to "Manage users", users_path if can?(:manage, User)
+    %ul.right
+      = render 'devise/menu/login_items'
+
+
+= flashy(flash)
+

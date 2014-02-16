@@ -26,4 +26,4 @@
                 %td.subject= link_to ticket.subject, url_for(ticket)
                 %td{:class => "priority #{ticket.priority}"}= ticket.priority.humanize
 
-%p= link_to 'Submit New Ticket', new_ticket_path
+%p= link_to 'Submit New Ticket', new_ticket_path, class: "small round button"
