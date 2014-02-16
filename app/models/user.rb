@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   protected
 
   def set_default_role
-    self.role = ROLES[0]
+    self.role ||= ROLES[0]
   end
 
   def set_temporary_password
