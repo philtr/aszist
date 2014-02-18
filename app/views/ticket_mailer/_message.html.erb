@@ -1,0 +1,9 @@
+<% comment = comments.shift %>
+<%- if comment -%>
+  <%= markdownify("On #{ comment.created_at.strftime("%a %b %-d %-l:%M%p %Z") }, #{comment.user} wrote:") %>
+<blockquote style="border-left:1px solid #aaa;margin-left:0;padding-left:1em;color:#777">
+  <%= markdownify(comment.body) %>
+
+  <%= render "message", comments: comments %>
+</blockquote>
+<%- end %>

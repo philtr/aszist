@@ -4,6 +4,10 @@ class Comment < ActiveRecord::Base
 
   before_create :strip_out_reply_and_signature
 
+  def self.sent_to_user
+    where(sent_to_user: true)
+  end
+
   private
 
   def strip_out_reply_and_signature

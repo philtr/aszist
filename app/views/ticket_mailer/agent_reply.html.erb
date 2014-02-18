@@ -1,8 +1,4 @@
 <%= markdownify(@comment.body) %>
-<hr/>
-<%- @comment.ticket.comments.reverse.each do |comment| -%>
-<%= markdownify("#{@comment.user} wrote:") %>
-<%= markdownify(comment.body) %>
-<% end %>
-<%= markdownify("#{@comment.ticket.user} wrote:") %>
-<%= markdownify(@comment.ticket.body) %>
+
+<%= render "message", comments: @comment.ticket.comments.sent_to_user.reverse %>
+
