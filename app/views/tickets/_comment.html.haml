@@ -1,4 +1,4 @@
-%div.panel
+%div.panel{ class: ("callout" if comment.sent_to_user?) }
   %p
     %strong= comment.user
     = raw("<em>(Sent to user)</em>") if comment.sent_to_user?

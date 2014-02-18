@@ -1,4 +1,4 @@
 <%= markdownify(@comment.body) %>
 
-<%= render "message", comments: @comment.ticket.comments.sent_to_user.reverse %>
+<%= render "message", comments: @comment.previous_comments.sent_to_user.newest_first %>
 

@@ -4,6 +4,14 @@ class Comment < ActiveRecord::Base
 
   before_create :strip_out_reply_and_signature
 
+  def previous_comments
+    ticket.comments.where("id != ?", id).newest_first
+  end
+
+  def self.newest_first
+    order("created_at DESC")
+  end
+
   def self.sent_to_user
     where(sent_to_user: true)
   end
