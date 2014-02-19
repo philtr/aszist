@@ -15,10 +15,11 @@ class Ticket < ActiveRecord::Base
   validates :priority, :inclusion => { :in => Ticket::PRIORITIES }
   validates :token, :presence => true, :uniqueness => true
 
+  after_initialize :generate_token
+
   before_validation :set_pending,
                     :set_default_priority,
                     :create_user,
-                    :generate_token
 
 
   def activity
@@ -87,7 +88,7 @@ class Ticket < ActiveRecord::Base
   end
 
   def generate_token
-    self.token = SecureRandom.hex(64) if self.token.blank?
+    self.token ||= SecureRandom.hex(8)
   end
 
 end
