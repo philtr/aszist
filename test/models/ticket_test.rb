@@ -107,7 +107,7 @@ class TicketTest < ActiveSupport::TestCase
       @ticket.update_column(:status, :open)
       create(:comment, ticket: @ticket)
 
-      assert_equal [Comment, PaperTrail::Version].to_set, @ticket.activity.map(&:class).uniq.to_set
+      assert_equal [Comment, PaperTrail::Version].to_set, @ticket.reload.activity.map(&:class).uniq.to_set
     end
 
     should "set status to 'pending' on create" do
