@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.3'
+gem 'rails', '4.0.9'
 gem 'mailman', '~> 0.7.0'
 
 gem 'pg'
