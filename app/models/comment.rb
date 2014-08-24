@@ -26,7 +26,7 @@ class Comment < ActiveRecord::Base
       /^From:\s/i,
       /^[_-]+$/,
       /^(Sincerely|Thanks|Regards|Cheers|Best|Love),?$/i,
-      /^[-–—]?\s?\w+$/, # - Name
+      /^[-–—]\s?\w+$/, # - Name
       /^-+$/,
       /^Sent from my (iPhone|iPad|iPod(\stouch)?|Blackberry)/i ]
   end
