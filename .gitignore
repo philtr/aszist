@@ -25,5 +25,6 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
+.ruby-version
 
 /config/database.yml
