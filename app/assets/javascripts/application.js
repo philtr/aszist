@@ -12,3 +12,5 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+Turbolinks.enableTransitionCache();
