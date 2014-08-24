@@ -7,6 +7,7 @@
     <%= render "message", comments: comments %>
   </blockquote>
 <%- else -%>
+  <%= "On #{ @comment.ticket.created_at.strftime("%a %b %-d %-l:%M%p %Z") }, #{@comment.ticket.user} <#{ @comment.ticket.user.email }> wrote:" %>
   <blockquote style="border-left:1px solid #aaa;margin-left:0;padding-left:1em;color:#777">
     <%= markdownify @comment.ticket.body %>
   </blockquote>
