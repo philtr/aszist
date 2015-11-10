@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.9'
+gem 'rails', '4.0.13'
 gem 'mailman', '~> 0.7.0'
 
 gem 'pg'
@@ -12,8 +12,8 @@ gem 'paper_trail', '~> 3.0.0'
 gem 'redcarpet', '~> 3.0.0'
 gem 'simple_form', '~> 3.0.1'
 
-gem 'foundation-rails'
-gem 'jquery-rails'
+gem 'foundation-rails', '~> 5.4.0'
+gem 'jquery-rails', '~> 3.1.1'
 gem 'haml', '~> 4.0.5'
 gem 'sass-rails', '~> 4.0.2'
 gem 'turbolinks', '~> 2.2.1'
