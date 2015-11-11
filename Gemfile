@@ -1,23 +1,25 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rails', '4.0.13'
-gem 'mailman', '~> 0.7.0'
+ruby "2.2.3"
 
-gem 'pg'
+gem "rails", "4.2.4"
+gem "mailman", "~> 0.7.0"
 
-gem 'devise', '~> 3.2.2'
-gem 'dotenv-rails', '~> 0.9.0'
-gem 'cancan', '~> 1.6.10'
-gem 'paper_trail', '~> 3.0.0'
-gem 'redcarpet', '~> 3.0.0'
-gem 'simple_form', '~> 3.0.1'
+gem "pg"
 
-gem 'foundation-rails', '~> 5.4.0'
-gem 'jquery-rails', '~> 3.1.1'
-gem 'haml', '~> 4.0.5'
-gem 'sass-rails', '~> 4.0.2'
-gem 'turbolinks', '~> 2.2.1'
-gem 'uglifier', '~> 2.4.0'
+gem "devise", "~> 3.5"
+gem "dotenv-rails", "~> 2.0"
+gem "cancancan", "~> 1.13"
+gem "paper_trail", "~> 4.0"
+gem "redcarpet", "~> 3.3"
+gem "simple_form", "~> 3.2"
+
+gem "foundation-rails", "~> 5.5"
+gem "jquery-rails", "~> 4.0"
+gem "haml", "~> 4.0"
+gem "sass-rails", "~> 5.0"
+gem "turbolinks", "~> 2.5"
+gem "uglifier", "~> 2.7"
 
 group :development do
   gem "foreman"
@@ -25,10 +27,9 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'shoulda-context'
-  gem 'shoulda-matchers'
-  gem 'simplecov', require: false
-  gem 'turn', require: false
+  gem "factory_girl_rails"
+  gem "shoulda-context"
+  gem "shoulda-matchers"
+  gem "simplecov", require: false
 end
 

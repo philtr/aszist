@@ -6,40 +6,28 @@ FactoryGirl.define do
     subject "Having trouble"
     body "Hello, I'm having trouble creating an account, thanks :)"
 
-    factory :low_priority_ticket do
+    trait :low do
       priority "low"
-
-      factory :ticket_pending_low do
-        status "pending"
-      end
-
-      factory :ticket_open_low  do
-        status "open"
-      end
-
-      factory :ticket_closed_low do
-        status "closed"
-      end
     end
 
-    factory :medium_priority_ticket do
+    trait :medium do
       priority "medium"
     end
 
-    factory :high_priority_ticket do
+    trait :high do
       priority "high"
+    end
 
-      factory :ticket_pending_high do
-        status "pending"
-      end
+    trait :pending do
+      status "pending"
+    end
 
-      factory :ticket_open_high do
-        status "open"
-      end
+    trait :open  do
+      status "open"
+    end
 
-      factory :ticket_closed_high do
-        status "closed"
-      end
+    trait :closed do
+      status "closed"
     end
   end
 end

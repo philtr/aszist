@@ -4,13 +4,10 @@ SimpleCov.start
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'turn/autorun'
 
 require 'factory_girl'
 require 'shoulda/context'
 require 'shoulda/matchers'
-
-require 'turn'
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
